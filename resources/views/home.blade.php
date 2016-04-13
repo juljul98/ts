@@ -9,6 +9,9 @@
 
                 <div class="panel-body">
                     You are logged in!
+                    @foreach($employee as $names)
+                      <h1>{{ $names->name }}</h1>
+                    @endforeach
                 </div>
             </div>
         </div>
