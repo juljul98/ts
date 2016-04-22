@@ -14,6 +14,9 @@
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+Route::post('/home/name', 'homeController@index');
+
+Route::resource('/profile', 'ProfileController@index');
 
 Route::controllers([
   'auth' => 'Auth\AuthController',

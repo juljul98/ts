@@ -57,8 +57,8 @@ class AuthController extends Controller
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|AlphaNum|min:6|confirmed',
             'phone' => 'required|max:12',
-          'gender' => 'required',
-          'department' => 'required',
+            'gender' => 'required',
+            'department' => 'required',
         ]);
     }
 

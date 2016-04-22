@@ -26,11 +26,12 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
       $employee = User::orderBy('name', 'ASC');
       $employee = $employee->get();
-        return view::make('home', compact('employee'));
+      return view::make('home', compact('employee'));
+        
     }
   
     

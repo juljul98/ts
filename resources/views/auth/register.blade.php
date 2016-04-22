@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+  .nav li:nth-child(2) a {
+    border-bottom: 2px solid #e74c3c;
+  }
+</style>
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
