@@ -10,6 +10,9 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Html;
 use Input;
 use Form;
+use Auth;
+use Response;
+use Request;
 
 class AuthController extends Controller
 {
@@ -31,7 +34,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+//    protected $redirectTo = '/home';
 
     /**
      * Create a new authentication controller instance.
@@ -42,51 +45,108 @@ class AuthController extends Controller
     {
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
-
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
+  
+    public function authenticate()
     {
-        return Validator::make($data, [
-            'avatar' => 'required',
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|AlphaNum|min:6|confirmed',
-            'phone' => 'required|max:12',
-            'gender' => 'required',
-            'department' => 'required',
-        ]);
-    }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return User
-     */
-    protected function create(array $data)
-    {
-          $imgfile = Input::file('avatar');
-          $destinationPath = 'uploads'; // upload path
-          $extension = $imgfile->getClientOriginalExtension(); // getting image extension
-          $fileName = rand(11111,99999).'.'.$extension; // renameing image
-          Input::file('avatar')->move($destinationPath, $fileName); // uploading file to given path
-          // sending back with message
-          $imgsrc = $destinationPath.'/'.$fileName;
-          return User::create([
-            'avatar' => $imgsrc,
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            'address' => $data['address'],
-            'phone' => $data['phone'],
-            'gender' => $data['gender'],
-            'department' => $data['department'],
-          ]);
+      $credentials_username_as = array(
+        'username' => Input::get('username'), 
+        'password' => Input::get('password'),
+        'active' => 0,
+        'position' => 'Associate');
+      $credentials_email_as = array(
+        'email' => Input::get('username'), 
+        'password' => Input::get('password'),
+        'active' => 0,
+        'position' => 'Associate');
       
+      $credentials_username_ad = array(
+        'username' => Input::get('username'), 
+        'password' => Input::get('password'),
+        'active' => 1,
+        'position' => 'Admin');
+      $credentials_email_ad = array(
+        'email' => Input::get('username'), 
+        'password' => Input::get('password'),
+        'active' => 1,
+        'position' => 'Admin');
+
+      
+      if (Auth::attempt( $credentials_username_as , true)) {
+        // Authentication passed...
+        return response('associate');
+      } elseif (Auth::attempt( $credentials_email_as , true)) {
+        // Authentication passed...
+        return response('associate');
+        
+      } else if (Auth::attempt( $credentials_username_ad , true)) {
+        // Authentication passed...
+        return response('admin');
+        
+      } elseif (Auth::attempt( $credentials_email_ad , true)) {
+        // Authentication passed...
+        return response('admin');
+      }
+      
+      
+      
+      
+      
+      else {
+        return response('invalid');
+      }
     }
+  
+    public function registration (Request $request){
+
+      $files = array(
+        'empno'      => Input::get('empno'),
+        'username'   => Input::get('username'),
+        'fullname'   => Input::get('fullname'),
+        'email'      => Input::get('email'),
+        'password'   => Input::get('password'),
+        'password_confirmation' => Input::get('password_confirmation'),
+        'gender'   => Input::get('gender'),
+        'department'   => Input::get('department'),
+        'position'   => Input::get('position'),
+        'active'     => 0);
+
+      $rules = [
+        'empno'     => 'required|numeric|unique:users',
+        'username'  => 'required|max:255',
+        'fullname'  => 'required|max:255',
+        'email'     => 'required|email|max:255|unique:users',
+        'password'  => 'required|AlphaNum|min:6',
+        'password_confirmation' => 'required|same:password',
+        'gender'    => 'required',
+        'department' => 'required',
+        'position'  => 'required',
+      ];
+
+      $validator = Validator::make($files, $rules);
+      if ( $validator->fails())
+      {
+        return Response::json(
+          $validator->messages()
+        );
+      }
+      else {
+        $imgsrc = 'uploads/avatar.jpg';
+        $user = new User;
+        $empno = Input::get('empno');
+        $user->avatar = $imgsrc;
+        $user->empno = $empno;
+        $user->username = Input::get('username');
+        $user->fullname = Input::get('fullname');
+        $user->email = Input::get('email');
+        $user->password = bcrypt(Input::get('password'));
+        $user->gender = Input::get('gender');
+        $user->department = Input::get('department');
+        $user->position = Input::get('position');
+        $user->active = 0;
+        $user->save();
+        return response('Register');
+      }
+    }
+
 }

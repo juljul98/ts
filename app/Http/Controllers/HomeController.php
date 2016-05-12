@@ -28,9 +28,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-      $employee = User::orderBy('name', 'ASC');
-      $employee = $employee->get();
-      return view::make('home', compact('employee'));
+
+      return view::make('home');
         
     }
   

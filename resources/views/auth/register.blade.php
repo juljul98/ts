@@ -1,166 +1,104 @@
 @extends('layouts.app')
-
 @section('content')
-<style>
-  .nav li:nth-child(2) a {
-    border-bottom: 2px solid #e74c3c;
-  }
-</style>
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
-                <div class="panel-body">
-                 
-                   {!! Form::open (array('url' => '/register', 'method' => 'POST', 'files' => true, 'class' => 'form-horizontal', 'role' => 'form')) !!}
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
-                        {!! csrf_field() !!}
-                        
-                        
-                      <div class="form-group{{ $errors->has('avatar') ? ' has-error' : '' }}">
-                        <label class="col-md-4 control-label">Image Upload</label>
+<div class="container" id="registerframe">
+  <div class="row">
 
-                        <div class="col-md-6">
-                          {!! Form::file('avatar') !!}
+    <div class="col l6 s10 offset-l3 offset-s1 collection with-header"  id="task-card">
+        {!! Form::open (array('url' => '/register/savaData', 'method' => 'POST', 'class' => 'form-horizontal frmRegistration', 'role' => 'form')) !!}
+        <!--                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">-->
+        {!! csrf_field() !!}
+      <div class="collection-header teal">
+        <h5 class="task-card-title fntWhite center">Registration</h5>
+      </div>
+         <div class="collection-item">
+           <div class="row">
+             <div class="input-field col l8 s10 offset-l2 offset-s1">
+               <input type="text" class="validate" name="empno">
+               <label class="empLbl">Employee Number</label>
+               <p class="error empError"></p>
+             </div>
+           </div>
+           <div class="row">
+             <div class="input-field col l8 s10 offset-l2 offset-s1">
+               <input type="text" class="validate" name="username">
+               <label for="username">Username</label>
+               <p class="error unameError"></p>
+             </div>
+           </div>
+           <div class="row">
+             <div class="input-field col l8 s10 offset-l2 offset-s1">
+               <input type="text" class="validate" name="fullname">
+               <label for="username">Fullname</label>
+               <p class="error fullnameError"></p>
+             </div>
+           </div>
+           <div class="row">
+             <div class="input-field col l8 s10 offset-l2 offset-s1">
+               <input type="email" class="validate" name="email">
+               <label for="email">E-Mail Address</label>
+               <p class="error emailError"></p>
+             </div>
+           </div>
+           <div class="row">
+             <div class="input-field col l8 s10 offset-l2 offset-s1">
+               {!! Form::password('password', array('class' => 'validate')) !!}
+               <label for="password">Password</label>
+               <p class="error passwordError"></p>
+             </div>
+           </div>
+           <div class="row">
+             <div class="input-field col l8 s10 offset-l2 offset-s1">
+               {!! Form::password('password_confirmation', array('class' => 'validate' )) !!}
+               <label for="password_confirmation">Confirm Password</label>
+               <p class="error passConfirmError"></p>
+             </div>
+           </div>
 
-                          @if ($errors->has('avatar'))
-                          <span class="help-block">
-                            <strong>{{ $errors->first('avatar') }}</strong>
-                          </span>
-                          @endif
-                        </div>
-                      </div>
-                        
+           <div class="row">
+             <div class="input-field col l8 s10 offset-l2 offset-s1">
+               {!! Form::select('gender', array('male' => 'Male', 'female' => 'Female'), null)!!}
+               <label>Gender</label>
+               <p class="error genderError"></p>
+             </div>
+           </div>
+           <div class="row">
+             <div class="input-field col l8 s10 offset-l2 offset-s1">
+               {!! Form::select('department', array('Web Integration' => 'Web Integration', 'E-Commerce' => 'E-Commerce', 'Callcenter' => 'Callcenter', 'HR' => 'HR'), null)!!}
+               <label>Department</label>
+               <p class="error departmentError"></p>
+             </div>
+           </div>
+           <div class="row">
+             <div class="input-field col l8 s10 offset-l2 offset-s1">
+               {!! Form::select('position', array('Manager' => 'Manager', 'Team Lead' => 'Team Lead', 'Associate' => 'Associate', 'HR' => 'HR', 'Guard' => 'Guard'), null )!!}
+               <label>Position</label>
+               <p class="error positionError"></p>
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Name</label>
+             </div>
+           </div>
+           <div class="row">
+             <div class="input-field col l8 s10 offset-l2 offset-s1">
+               <button type="submit" class="waves-effect waves-light btn teal">
+                 <i class="material-icons">people</i>&nbsp;&nbsp;&nbsp;<span style="vertical-align: top;">Login</span>
+               </button>
+             </div>
+           </div>
+           <div class="row">
+             <p class="margin center medium-small sign-up">Already have an account? <a href="{{ url('/login') }}">Login</a></p>
+           </div>
+         </div>
+        {{ Form::close() }}
 
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" name="name" value="{{ old('name') }}">
 
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                               {!! Form::password('password', array('class' => 'form-control')) !!}
-                                
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Confirm Password</label>
-
-                            <div class="col-md-6">
-                               {!! Form::password('password_confirmation', array('class' => 'form-control')) !!}
-
-                                @if ($errors->has('password_confirmation'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        
-                      <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
-                        <label class="col-md-4 control-label">Phone Number</label>
-
-                        <div class="col-md-6">
-                         {!! Form::text('phone', '', array('class' => 'form-control'))!!}
-
-                          @if ($errors->has('phone'))
-                          <span class="help-block">
-                            <strong>{{ $errors->first('phone') }}</strong>
-                          </span>
-                          @endif
-                        </div>
-                      </div>
-                      
-                      
-                      <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
-                        <label class="col-md-4 control-label">Address</label>
-
-                        <div class="col-md-6">
-                          {!! Form::text('address', '', array('class' => 'form-control'))!!}
-
-                          @if ($errors->has('address'))
-                          <span class="help-block">
-                            <strong>{{ $errors->first('address') }}</strong>
-                          </span>
-                          @endif
-                        </div>
-                      </div>
-                       
-                       
-                      <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
-                        <label class="col-md-4 control-label">Gender</label>
-
-                        <div class="col-md-6">
-                          {!! Form::select('gender', array('male' => 'Male', 'female' => 'Female'), null, ['class' => 'form-control'])!!}
-                          @if ($errors->has('phone'))
-                          <span class="help-block">
-                            <strong>{{ $errors->first('phone') }}</strong>
-                          </span>
-                          @endif
-                        </div>
-                      </div>
-                       
-                      <div class="form-group{{ $errors->has('department') ? ' has-error' : '' }}">
-                        <label class="col-md-4 control-label">Department</label>
-
-                        <div class="col-md-6">
-                          {!! Form::select('department', array('1' => 'Digital Marketing', '2' => 'E-Commerce', '3' => 'Callcenter'), null, ['class' => 'form-control'])!!}
-                          @if ($errors->has('phone'))
-                          <span class="help-block">
-                            <strong>{{ $errors->first('phone') }}</strong>
-                          </span>
-                          @endif
-                        </div>
-                      </div>
-                        
-                        
-                         
-                         
-                         
-                          
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-user"></i>Register
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
     </div>
+  </div>
+  <div id="card-alert" class="card green approval">
+    <div class="card-content white-text">
+      <p>Wait for the Approval of the Admin of this Site</p>
+    </div>
+    <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
 </div>
-@endsection
+@stop

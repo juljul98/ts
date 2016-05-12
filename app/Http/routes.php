@@ -13,18 +13,20 @@
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
-Route::post('/home/name', 'homeController@index');
+//Login Route
+Route::any('/auth', 'Auth\AuthController@authenticate');
+Route::post('/saveData', 'Auth\AuthController@registration');
 
-Route::resource('/profile', 'ProfileController@index');
+//Admin Route
+Route::get('/admin', 'adminController@index');
+Route::get('/manageaccount', 'manageController@index');
 
 Route::controllers([
   'auth' => 'Auth\AuthController',
   'password' => 'Auth\PasswordController',
 ]);
-Route::get('/', function(){
-  return view('welcome');
-});
+
+Route::any('/home', 'homeController@index');
 
 
 

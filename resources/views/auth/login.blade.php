@@ -6,61 +6,63 @@
     border-bottom: 2px solid #e74c3c;
   }
 </style>
-<div class="container" ng-controller="loginController">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
-                        {!! csrf_field() !!}
 
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
-
-
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input type="password" class="form-control" name="password">
-
-
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember"> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary" ng-click="sendCred($event)">
-                                    <i class="fa fa-btn fa-sign-in"></i>Login
-                                </button>
-
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
-                            </div>
-                        </div>
-                      <div class="alert alert-danger">
-                        <strong>Danger!</strong> Wrong Username Password
-                      </div>
-                    </form>
-                </div>
-            </div>
+<div class="row" id="login">
+  <div class="col l4 s10 offset-l4 offset-s1" ng-class="action">
+    <!-- Login -->
+    <div class="collection with-header"  id="task-card">
+      <div class="collection-header teal">
+        <h5 class="task-card-title fntWhite center">Login</h5>
+      </div>
+      <form class="form-horizontal frmLogin" role="form" method="POST" action="{{ url('/login/auth') }}">
+        {!! csrf_field() !!}
+        <div class="row">
+          <div class="input-field col l8 s10 offset-l2 offset-s1">
+            <input id="username" type="text" class="validate username" name="username">
+            
+            <label for="username">Username/Email</label>
+          </div>
         </div>
+        <div class="row">
+          <div class="input-field col l8 s10 offset-l2 offset-s1">
+            <input id="password" type="password" class="validate password" name="password">
+            <label for="password">Password</label>
+          </div>
+        </div>
+        <div class="row">
+          <p class="col l8 offset-l2 offset-s1">
+            <input type="checkbox" id="test6" name="remember" />
+            <label for="test6">Remember Me</label>
+          </p>
+        </div>
+        <div class="row">
+          <div class="col l8 offset-l2 offset-s1">
+            <button type="submit" class="waves-effect waves-light btn teal">
+              <i class="material-icons">lock_open</i>&nbsp;&nbsp;&nbsp;<span style="vertical-align: top;">Login</span>
+            </button>
+          </div>
+        </div>
+      </form>
+      <div class="row">
+        <div class="col l7 offset-l1">
+          <a class="waves-effect waves-teal btn-flat activator grey-text text-darken-4 fnt10" href="{{ url('password/reset') }}">Forgot Your Password?</a>
+        </div>
+        <div class="col l2">
+          <a class="waves-effect waves-teal btn-flat activator grey-text text-darken-4 fnt10" href="{{ url('/register') }}">Register</a>
+        </div>
+      </div>
+      <!-- / Login end -->
+
+      
     </div>
+    <div id="card-alert" class="card red loginError">
+      <div class="card-content white-text">
+        <p><i class="mdi-alert-error"></i> DANGER : The daily report has failed</p>
+      </div>
+      <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+  </div>
 </div>
 @endsection
