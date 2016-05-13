@@ -18,8 +18,14 @@ Route::any('/auth', 'Auth\AuthController@authenticate');
 Route::post('/saveData', 'Auth\AuthController@registration');
 
 //Admin Route
-Route::get('/admin', 'adminController@index');
+Route::get('/admin', 'dashController@index');
+Route::post('/admin/getRegisteredEmployee', 'dashController@getRegisteredEmployee');
+Route::post('/admin/getPendingEmployee', 'dashController@getPendingEmployee');
+
+//Manage Account
 Route::get('/manageaccount', 'manageController@index');
+Route::post('/manageaccount/getRecord', 'manageController@getRecord');
+Route::post('/manageaccount/updateActive/{id}', 'manageController@updateActive');
 
 Route::controllers([
   'auth' => 'Auth\AuthController',
@@ -27,7 +33,6 @@ Route::controllers([
 ]);
 
 Route::any('/home', 'homeController@index');
-
-
-
-
+Route::get('/', function(){
+  return view('auth.login');
+});

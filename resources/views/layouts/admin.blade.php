@@ -8,7 +8,8 @@
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google. ">
     <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template,">
-    <title>Admin</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>{{ $title }}</title>
 
     <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
 
@@ -22,13 +23,12 @@
 
     <link href="css/custom/custom.min.css" type="text/css" rel="stylesheet" media="screen,projection">
 
-
-
     <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="js/plugins/jvectormap/jquery-jvectormap.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
 
-
+    <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>
+  
   </head>
 
   <body>
@@ -213,7 +213,7 @@
     </div>
 
       <!-- jQuery Library -->
-      <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>
+
       <script type="text/javascript" src="js/materialize.min.js"></script>
       <script type="text/javascript" src="js/plugins.min.js"></script>
 

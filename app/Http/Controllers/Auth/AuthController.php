@@ -50,43 +50,46 @@ class AuthController extends Controller
     {
 
       $credentials_username_as = array(
-        'username' => Input::get('username'), 
+        'username' => Input::get('username'),
         'password' => Input::get('password'),
-        'active' => 0,
+        'active' => 1,
         'position' => 'Associate');
       $credentials_email_as = array(
-        'email' => Input::get('username'), 
+        'email' => Input::get('username'),
         'password' => Input::get('password'),
-        'active' => 0,
+        'active' => 1,
         'position' => 'Associate');
       
       $credentials_username_ad = array(
-        'username' => Input::get('username'), 
+        'username' => Input::get('username'),
         'password' => Input::get('password'),
         'active' => 1,
         'position' => 'Admin');
       $credentials_email_ad = array(
-        'email' => Input::get('username'), 
+        'email' => Input::get('username'),
         'password' => Input::get('password'),
         'active' => 1,
         'position' => 'Admin');
 
+      // USER LEVEL 1
       
-      if (Auth::attempt( $credentials_username_as , true)) {
-        // Authentication passed...
-        return response('associate');
-      } elseif (Auth::attempt( $credentials_email_as , true)) {
-        // Authentication passed...
-        return response('associate');
-        
-      } else if (Auth::attempt( $credentials_username_ad , true)) {
-        // Authentication passed...
-        return response('admin');
+      
+      if (Auth::attempt( $credentials_username_ad , true)) {
+        return response('1');
         
       } elseif (Auth::attempt( $credentials_email_ad , true)) {
-        // Authentication passed...
-        return response('admin');
+        return response('1');
       }
+      // USER LEVEL 2
+      elseif (Auth::attempt( $credentials_email_as , true)) {
+        return response('2');
+      }
+      elseif (Auth::attempt( $credentials_email_as , true)) {
+        return response('2');
+
+      }
+      
+      
       
       
       

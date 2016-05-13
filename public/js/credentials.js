@@ -15,10 +15,10 @@ $(document).ready(function(){
       url  : base_url + 'auth',
       data : {'username': username, 'password': password },
       success : function(response) {
-        if( response == 'associate' ) {
-          window.location.href = window.location.href = '/home';
-        } else if ( response == 'admin' ) {
+        if( response == '1' ) {
           window.location.href = window.location.href = '/admin';
+        } else if ( response == '2' ) {
+          window.location.href = window.location.href = '/home';
         }
         else {
           $('.loginError').fadeIn();

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use DB;
+use View;
+use App\User;
 
 class manageController extends Controller
 {
@@ -16,8 +18,18 @@ class manageController extends Controller
   }
   
     public function index() {
-      
+      $title = 'Manage Accounts | Tracking System';
       $users = DB::table('users')->get();
-      return view('admin.manage', compact('users'));
+    
+      return View::make('admin.manage', compact('title', 'users'));
+
     }
+  
+    public function updateActive (Request $request, $id) {
+      $users = User::find($id);
+      $users->active = $request->input('checked');
+      $users->save();
+      return response('updated');
+    }
+  
 }
