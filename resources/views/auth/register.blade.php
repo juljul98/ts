@@ -13,42 +13,42 @@
          <div class="collection-item">
            <div class="row">
              <div class="input-field col l8 s10 offset-l2 offset-s1">
-               <input type="text" class="validate" name="empno">
+               <input type="text" class="validate empno" name="empno">
                <label class="empLbl">Employee Number</label>
                <p class="error empError"></p>
              </div>
            </div>
            <div class="row">
              <div class="input-field col l8 s10 offset-l2 offset-s1">
-               <input type="text" class="validate" name="username">
+               <input type="text" class="validate username" name="username">
                <label for="username">Username</label>
                <p class="error unameError"></p>
              </div>
            </div>
            <div class="row">
              <div class="input-field col l8 s10 offset-l2 offset-s1">
-               <input type="text" class="validate" name="fullname">
+               <input type="text" class="validate fullname" name="fullname">
                <label for="username">Fullname</label>
                <p class="error fullnameError"></p>
              </div>
            </div>
            <div class="row">
              <div class="input-field col l8 s10 offset-l2 offset-s1">
-               <input type="email" class="validate" name="email">
+               <input type="email" class="validate email" name="email">
                <label for="email">E-Mail Address</label>
                <p class="error emailError"></p>
              </div>
            </div>
            <div class="row">
              <div class="input-field col l8 s10 offset-l2 offset-s1">
-               {!! Form::password('password', array('class' => 'validate')) !!}
+               {!! Form::password('password', array('class' => 'validate password')) !!}
                <label for="password">Password</label>
                <p class="error passwordError"></p>
              </div>
            </div>
            <div class="row">
              <div class="input-field col l8 s10 offset-l2 offset-s1">
-               {!! Form::password('password_confirmation', array('class' => 'validate' )) !!}
+               {!! Form::password('password_confirmation', array('class' => 'validate password_confirmation' )) !!}
                <label for="password_confirmation">Confirm Password</label>
                <p class="error passConfirmError"></p>
              </div>
@@ -56,24 +56,23 @@
 
            <div class="row">
              <div class="input-field col l8 s10 offset-l2 offset-s1">
-               {!! Form::select('gender', array('male' => 'Male', 'female' => 'Female'), null)!!}
-               <label>Gender</label>
+               {!! Form::select('gender', array('default' => null, 'Male' => 'Male', 'Female' => 'Female'), null, array('class' => 'gender'))!!}
+                <label class="drpDown" for="gender">Gender</label>
                <p class="error genderError"></p>
              </div>
            </div>
            <div class="row">
              <div class="input-field col l8 s10 offset-l2 offset-s1">
-               {!! Form::select('department', array('Web Integration' => 'Web Integration', 'E-Commerce' => 'E-Commerce', 'Callcenter' => 'Callcenter', 'HR' => 'HR'), null)!!}
-               <label>Department</label>
+               {!! Form::select('department', array('default' => null, 'Web Integration' => 'Web Integration', 'E-Commerce' => 'E-Commerce', 'Callcenter' => 'Callcenter', 'HR' => 'HR'), null, array('class' => 'department'))!!}
+               <label class="drpDown" for="department">Department</label>
                <p class="error departmentError"></p>
              </div>
            </div>
            <div class="row">
              <div class="input-field col l8 s10 offset-l2 offset-s1">
-               {!! Form::select('position', array('Manager' => 'Manager', 'Team Lead' => 'Team Lead', 'Associate' => 'Associate', 'HR' => 'HR', 'Guard' => 'Guard'), null )!!}
-               <label>Position</label>
+               {!! Form::select('position', array('default' => null, '2' => 'Manager', '2' => 'Team Lead', '3' => 'Associate', '1' => 'HR', '4' => 'Guard'), null, array('class' => 'position') )!!}
+               <label class="drpDown" for="position">Position</label>
                <p class="error positionError"></p>
-
              </div>
            </div>
            <div class="row">

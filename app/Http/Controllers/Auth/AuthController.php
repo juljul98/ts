@@ -48,53 +48,25 @@ class AuthController extends Controller
   
     public function authenticate()
     {
-
-      $credentials_username_as = array(
-        'username' => Input::get('username'),
-        'password' => Input::get('password'),
-        'active' => 1,
-        'position' => 'Associate');
-      $credentials_email_as = array(
-        'email' => Input::get('username'),
-        'password' => Input::get('password'),
-        'active' => 1,
-        'position' => 'Associate');
-      
       $credentials_username_ad = array(
         'username' => Input::get('username'),
         'password' => Input::get('password'),
         'active' => 1,
-        'position' => 'Admin');
+        'userlevel' => '1');
       $credentials_email_ad = array(
         'email' => Input::get('username'),
         'password' => Input::get('password'),
         'active' => 1,
-        'position' => 'Admin');
+        'userlevel' => '1');
 
       // USER LEVEL 1
-      
-      
       if (Auth::attempt( $credentials_username_ad , true)) {
         return response('1');
         
       } elseif (Auth::attempt( $credentials_email_ad , true)) {
         return response('1');
       }
-      // USER LEVEL 2
-      elseif (Auth::attempt( $credentials_email_as , true)) {
-        return response('2');
-      }
-      elseif (Auth::attempt( $credentials_email_as , true)) {
-        return response('2');
-
-      }
-      
-      
-      
-      
-      
-      
-      
+        
       else {
         return response('invalid');
       }
@@ -146,7 +118,9 @@ class AuthController extends Controller
         $user->gender = Input::get('gender');
         $user->department = Input::get('department');
         $user->position = Input::get('position');
+        $user->userlevel = Input::get('userlevel');
         $user->active = 0;
+        $user->notif = 0;
         $user->save();
         return response('Register');
       }

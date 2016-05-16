@@ -17,44 +17,23 @@
   {!! Html::script('materialize/js/materialize.min.js') !!}
   {!! Html::script('js/credentials.js') !!}
   {!! Html::script('js/script.js') !!}
+      <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>
+    <script>var base_url = 'http://localhost:8000/';  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });</script>
   <!-- Load AngularJS Application Scripts -->
   <!-- Load Styles -->
+  {!! Html::style('materialize/css/materialize.min.css') !!}
   {!! Html::style('css/app.css') !!}
   {!! Html::style('css/animate.css') !!}
   {!! Html::style('css/style.min.css') !!}
-  {!! Html::style('materialize/css/materialize.min.css') !!}
   
 </head>
-  <body>
-<!--
-    <nav class="teal nav">
-      <div class="nav-wrapper container">
-        <a href="/" class="brand-logo">Tracking System</a>
-        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">reorder</i></a>
-        <ul class="right hide-on-med-and-down">
-          @if (Auth::guest())
-          <li><a class="welNav welNavBk" href="/login">Login</a></li>
-          <li><a class="welNav welNavBk" href="/register">Register</a></li>
-          @else
-          <li><div class="profileImg"><img src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }}"></div></li>
-          <li>{{ Auth::user()->name }}</li>
-          <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-          @endif
-        </ul>
-        <ul class="side-nav" id="mobile-demo">
-          @if (Auth::guest())
-          <li><a class="welNav welNavBk" href="#loginframe">Login</a></li>
-          <li><a class="welNav welNavBk" href="#registerframe">Register</a></li>
-          @else
-          <li><div class="profileImg"><img src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }}"></div></li>
-          <li>{{ Auth::user()->name }}</li>
-          <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-          @endif
-        </ul>
-      </div>
-    </nav>
--->
-    @yield('content')
-
-</body>
+      <body>
+        <main>
+            @yield('content')
+        </main>
+    </body>
 </html>

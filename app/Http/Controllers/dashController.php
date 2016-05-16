@@ -31,4 +31,10 @@ class dashController extends Controller
       $pending = DB::table('users')->where('active', '=', 0)->count();
       return Response($pending);
     }
+    
+    public function getNotification () {
+       $notif = DB::table('users')->where('notif', '=', 0)->count();
+       return Response($notif);
+    }
+    
 }

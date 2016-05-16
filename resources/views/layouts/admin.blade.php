@@ -21,6 +21,7 @@
     <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="css/style.min.css" type="text/css" rel="stylesheet" media="screen,projection">
 
+
     <link href="css/custom/custom.min.css" type="text/css" rel="stylesheet" media="screen,projection">
 
     <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
@@ -28,7 +29,11 @@
     <link href="js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
 
     <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>
-  
+    <script>var base_url = 'http://localhost:8000/';  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });</script>
   </head>
 
   <body>
@@ -46,18 +51,18 @@
     <header id="header" class="page-topbar">
       <!-- start header nav-->
       <div class="navbar-fixed">
-        <nav class="navbar-color">
+        <nav class="navbar-color teal">
           <div class="nav-wrapper">
             <ul class="right hide-on-med-and-down">
 
-              <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light notification-button" data-activates="notifications-dropdown"><i class="mdi-social-notifications"><small class="notification-badge">5</small></i>
+              <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light notifButton" data-activates="notifications-dropdown"><i class="mdi-social-notifications"><small class="notification-badge"></small></i>
                 </a>
               </li>
               <li><a href="#" data-activates="chat-out" class="waves-effect waves-block waves-light chat-collapse"><i class="mdi-communication-chat"></i></a>
               </li>
-              <ul id="notifications-dropdown" class="dropdown-content">
+              <ul id="notifications-dropdown" class="dropdown-content" style="white-space: nowrap; position: absolute; top: 64px; left: 1144px; opacity: 1;">
                 <li>
-                  <h5>NOTIFICATIONS <span class="new badge">5</span></h5>
+                  <h5>NOTIFICATIONS <span class="new badge"></span></h5>
                 </li>
                 <li class="divider"></li>
                 <li>
@@ -102,11 +107,6 @@
                 </li>
                 <li><a href="#"><i class="mdi-action-settings"></i> Settings</a>
                 </li>
-                <li><a href="#"><i class="mdi-communication-live-help"></i> Help</a>
-                </li>
-                <li class="divider"></li>
-                <li><a href="#"><i class="mdi-action-lock-outline"></i> Lock</a>
-                </li>
                 <li><a href="/logout"><i class="mdi-hardware-keyboard-tab"></i> Logout</a>
                 </li>
               </ul>
@@ -117,7 +117,7 @@
         </li>
         
         <li class="no-padding">
-          <ul class="collapsible collapsible-accordion">
+          <ul class="collapsible collapsible-accordion sideNav">
             <li class="bold active"><a href="{{ url('/admin') }}" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Dashboard</a>
             </li>
             <li class="bold"><a href="{{ url('/manageaccount') }}" class="waves-effect waves-cyan"><i class="mdi-device-now-widgets"></i> Manage Account</a>
@@ -214,13 +214,13 @@
 
       <!-- jQuery Library -->
 
+      <script type="text/javascript" src="js/adminscript.js"></script>
       <script type="text/javascript" src="js/materialize.min.js"></script>
       <script type="text/javascript" src="js/plugins.min.js"></script>
 
       <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
       <script type="text/javascript" src="js/plugins/data-tables/js/jquery.dataTables.min.js"></script>
       <script type="text/javascript" src="js/plugins/data-tables/data-tables-script.js"></script>
-      <script type="text/javascript" src="js/script.js"></script>
 
 
 

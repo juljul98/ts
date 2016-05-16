@@ -1,7 +1,9 @@
 @extends('layouts.admin')
 @section('content')
 <link rel="stylesheet" href="js/plugins/data-tables/css/jquery.dataTables.min.css">
-
+<script>
+    $('.sideNav li:nth-child(2)').addClass('active').siblings().removeClass('active');
+</script>
 <section id="content">
   <div class="container">
     <table id="data-table" class="responsive-table display" cellspacing="0">

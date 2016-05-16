@@ -17,15 +17,21 @@ Route::auth();
 Route::any('/auth', 'Auth\AuthController@authenticate');
 Route::post('/saveData', 'Auth\AuthController@registration');
 
-//Admin Route
+//Admin Route Level 1
 Route::get('/admin', 'dashController@index');
 Route::post('/admin/getRegisteredEmployee', 'dashController@getRegisteredEmployee');
 Route::post('/admin/getPendingEmployee', 'dashController@getPendingEmployee');
+Route::post('/admin/getNotification', 'dashController@getNotification');
 
-//Manage Account
 Route::get('/manageaccount', 'manageController@index');
 Route::post('/manageaccount/getRecord', 'manageController@getRecord');
 Route::post('/manageaccount/updateActive/{id}', 'manageController@updateActive');
+// Admin Close
+
+//Associate Route Level 2
+
+// Associate Close
+
 
 Route::controllers([
   'auth' => 'Auth\AuthController',
@@ -36,3 +42,4 @@ Route::any('/home', 'homeController@index');
 Route::get('/', function(){
   return view('auth.login');
 });
+

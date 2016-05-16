@@ -1,14 +1,7 @@
 $(document).ready(function(){
 //  ../images relative
-//  /images   absolute
+//  /images   absolute  
 
-  var base_url = 'http://localhost:8000/';
-  $.ajaxSetup({
-    headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-  });
-  
   function registeredEmployee () {
     $.ajax({
       type : 'post',
@@ -37,6 +30,5 @@ $(document).ready(function(){
     })
   }
   getPendingEmployee();
-  
-  
+ 
 });

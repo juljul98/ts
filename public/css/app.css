@@ -1,3 +1,6 @@
+select {
+    display: block; }
+
 html, body {
   height: 100%;
   font-family: 'Lato'; }
@@ -29,9 +32,23 @@ nav {
 .fntWhite {
   color: #fff; }
 
+.dropdown-content {
+    display: none; }
+
+.dropdown-content.active {
+    display: block!important; }
+
 input[type=text]:focus:not([readonly]), input[type=password]:focus:not([readonly]), input[type=email]:focus:not([readonly]), input[type=url]:focus:not([readonly]), input[type=time]:focus:not([readonly]), input[type=date]:focus:not([readonly]), input[type=datetime-local]:focus:not([readonly]), input[type=tel]:focus:not([readonly]), input[type=number]:focus:not([readonly]), input[type=search]:focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
   border-bottom: 1px solid #009688 !important;
   box-shadow: 0 1px 0 0 #009688 !important; }
+
+.error {
+    margin-top: 0!important;
+    color: #C0392B; }
+
+.drpDown {
+    position: relative !important;
+    top: -62px !Important; }
 
 .tSLink {
   font-size: 150%; }

@@ -25,7 +25,9 @@ class CreateUsersTable extends Migration
       $table->string('gender');
       $table->string('department');
       $table->string('position');
+      $table->string('userlevel');
       $table->integer('active');
+      $table->integer('notif');
       $table->rememberToken();
       $table->timestamps();
     });

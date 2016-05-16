@@ -1,5 +1,4 @@
 $(document).ready(function(){
-  $('#data-table').DataTable({ "bSort": false });
-  $('#data-table_length').remove();
-    
+  $('#data-table').DataTable({ "bSort": false, "pageLength": 20 });
+  $('#data-table_length').hide();
 });
