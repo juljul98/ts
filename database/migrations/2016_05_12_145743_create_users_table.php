@@ -27,7 +27,7 @@ class CreateUsersTable extends Migration
       $table->string('position');
       $table->string('userlevel');
       $table->integer('active');
-      $table->integer('notif');
+      $table->integer('online');
       $table->rememberToken();
       $table->timestamps();
     });

@@ -3,7 +3,8 @@
 <section id="content">
 
   <div class="container">
-    <h1>Welcome {{ (Auth::user()->fullname )}}!</h1>
+    <h1>Welcome!</h1>
+
     <div id="card-stats">
       <div class="row">
         <div class="col s12 m6 l3 offset-l1">

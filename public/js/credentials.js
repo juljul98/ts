@@ -62,7 +62,7 @@ $(document).ready(function(){
               $('.approval').fadeIn();
               setInterval(function(){
                 window.location.href = window.location.href = '/login';
-              }, 5000);
+              }, 1500);
             } else {
               $('body, html').animate({
                 scrollTop: 0

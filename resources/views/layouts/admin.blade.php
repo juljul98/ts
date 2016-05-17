@@ -60,7 +60,7 @@
               </li>
               <li><a href="#" data-activates="chat-out" class="waves-effect waves-block waves-light chat-collapse"><i class="mdi-communication-chat"></i></a>
               </li>
-              <ul id="notifications-dropdown" class="dropdown-content" style="white-space: nowrap; position: absolute; top: 64px; left: 1144px; opacity: 1;">
+              <ul id="notifications-dropdown" class="dropdown-content" style="white-space: nowrap; position: absolute; top: 64px; right: 60px; opacity: 1;">
                 <li>
                   <h5>NOTIFICATIONS <span class="new badge"></span></h5>
                 </li>

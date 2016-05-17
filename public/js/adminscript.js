@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  
     function getNotification () {
     $.ajax({
       type : 'post',
@@ -6,9 +7,10 @@ $(document).ready(function(){
       data : {},
       success : function(response){
           if (response == 0) {
-             $('.notification-badge, .new.badge').hide(); 
+             $('.notification-badge, .new.badge').hide();
           } else {
-            $('.notification-badge, .new.badge').text(response);
+            
+            $('.notification-badge, .new.badge').text(response).show();
           }
         
         setTimeout(function(){
@@ -21,6 +23,6 @@ $(document).ready(function(){
     $('.notifButton').click(function(e){
         e.preventDefault();
         $(this).toggleClass('active');
-       $('.dropdown-content').toggleClass('active'); 
-    }); 
+        $('.dropdown-content').toggleClass('active');
+    });
 });

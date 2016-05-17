@@ -12,7 +12,8 @@ use Input;
 use Form;
 use Auth;
 use Response;
-use Request;
+
+use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -44,6 +45,12 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+    }
+  
+    public function index (Request $request) {
+      
+        return view('auth.login');
+      
     }
   
     public function authenticate()
@@ -120,7 +127,6 @@ class AuthController extends Controller
         $user->position = Input::get('position');
         $user->userlevel = Input::get('userlevel');
         $user->active = 0;
-        $user->notif = 0;
         $user->save();
         return response('Register');
       }

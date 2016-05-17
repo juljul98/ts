@@ -18,14 +18,17 @@ Route::any('/auth', 'Auth\AuthController@authenticate');
 Route::post('/saveData', 'Auth\AuthController@registration');
 
 //Admin Route Level 1
-Route::get('/admin', 'dashController@index');
-Route::post('/admin/getRegisteredEmployee', 'dashController@getRegisteredEmployee');
-Route::post('/admin/getPendingEmployee', 'dashController@getPendingEmployee');
-Route::post('/admin/getNotification', 'dashController@getNotification');
 
-Route::get('/manageaccount', 'manageController@index');
-Route::post('/manageaccount/getRecord', 'manageController@getRecord');
-Route::post('/manageaccount/updateActive/{id}', 'manageController@updateActive');
+  Route::get('/admin', 'dashController@index');
+  Route::post('/admin/getRegisteredEmployee', 'dashController@getRegisteredEmployee');
+  Route::post('/admin/getPendingEmployee', 'dashController@getPendingEmployee');
+  Route::post('/admin/getNotification', 'dashController@getNotification');
+  Route::post('/manageaccount/seenNotification', 'dashController@seenNotification');
+
+  Route::get('/manageaccount', 'manageController@index');
+  Route::post('/manageaccount/getRecord', 'manageController@getRecord');
+  Route::post('/manageaccount/updateActive/{id}', 'manageController@updateActive');
+
 // Admin Close
 
 //Associate Route Level 2
@@ -39,7 +42,5 @@ Route::controllers([
 ]);
 
 Route::any('/home', 'homeController@index');
-Route::get('/', function(){
-  return view('auth.login');
-});
+Route::get('/', 'Auth\AuthController@index');
 
