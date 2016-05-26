@@ -214,14 +214,14 @@
 
       <!-- jQuery Library -->
 
-      <script type="text/javascript" src="js/adminscript.js"></script>
       <script type="text/javascript" src="js/materialize.min.js"></script>
       <script type="text/javascript" src="js/plugins.min.js"></script>
 
       <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
       <script type="text/javascript" src="js/plugins/data-tables/js/jquery.dataTables.min.js"></script>
       <script type="text/javascript" src="js/plugins/data-tables/data-tables-script.js"></script>
-
+      <script type="text/javascript" src="js/plugins/moment/moment.js"></script>
+      <script type="text/javascript" src="js/adminscript.js"></script>
 
 
 

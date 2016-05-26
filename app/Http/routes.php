@@ -23,11 +23,13 @@ Route::post('/saveData', 'Auth\AuthController@registration');
   Route::post('/admin/getRegisteredEmployee', 'dashController@getRegisteredEmployee');
   Route::post('/admin/getPendingEmployee', 'dashController@getPendingEmployee');
   Route::post('/admin/getNotification', 'dashController@getNotification');
+Route::post('/admin/getEmployee', 'dashController@getEmployee');
   Route::post('/manageaccount/seenNotification', 'dashController@seenNotification');
 
   Route::get('/manageaccount', 'manageController@index');
   Route::post('/manageaccount/getRecord', 'manageController@getRecord');
   Route::post('/manageaccount/updateActive/{id}', 'manageController@updateActive');
+
 
 // Admin Close
 

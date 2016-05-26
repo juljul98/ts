@@ -1,7 +1,7 @@
 $(document).ready(function(){
 //  ../images relative
 //  /images   absolute  
-
+  $('#modal1').leanModal();
   function registeredEmployee () {
     $.ajax({
       type : 'post',

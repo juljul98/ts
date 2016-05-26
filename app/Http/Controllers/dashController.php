@@ -35,19 +35,12 @@ class dashController extends Controller
                         ->count();
       return Response($pending);
     }
-    
-    public function getNotification () {
-       $notif = DB::table('users')
-                        ->where('notif', '=', 0)
-                        ->count();
-       return Response($notif);
-    }
-  
-    public function seenNotification () {
-      $seen = DB::table('users')
-                        ->where('notif', '=', 0)
-                        ->update(array('notif' => 1));
-      return Response('Update');
-    }
-    
+  public function getEmployee () {
+    $employee = DB::table('users')
+      ->select('fullname', 'created_at')
+      ->where('active', '=', 1)
+      ->get();
+    return Response($employee);
+  }
+
 }

@@ -31,5 +31,5 @@ class manageController extends Controller
       $users->save();
       return response('updated');
     }
-  
+
 }
