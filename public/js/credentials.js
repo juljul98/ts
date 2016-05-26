@@ -13,7 +13,7 @@ $(document).ready(function(){
       success : function(response) {
         if( response == '1' ) {
           window.location.href = window.location.href = '/admin';
-        } else if ( response == '2' ) {
+        } else if ( response == '3' ) {
           window.location.href = window.location.href = '/home';
         }
         else {

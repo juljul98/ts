@@ -65,13 +65,26 @@ class AuthController extends Controller
         'password' => Input::get('password'),
         'active' => 1,
         'userlevel' => '1');
+      $credentials_username_as = array(
+        'username' => Input::get('username'),
+        'password' => Input::get('password'),
+        'active' => 1,
+        'userlevel' => '3');
+      $credentials_email_as = array(
+        'email' => Input::get('username'),
+        'password' => Input::get('password'),
+        'active' => 1,
+        'userlevel' => '3');
 
       // USER LEVEL 1
       if (Auth::attempt( $credentials_username_ad , true)) {
         return response('1');
-        
       } elseif (Auth::attempt( $credentials_email_ad , true)) {
         return response('1');
+      } elseif (Auth::attempt( $credentials_username_as , true)) {
+        return response('3');
+      } elseif (Auth::attempt( $credentials_email_as , true)) {
+        return response('3');
       }
         
       else {
