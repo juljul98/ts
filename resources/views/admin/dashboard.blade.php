@@ -48,7 +48,7 @@
 <!-- Modal Structure -->
 <div id="modal1" class="modal">
   <div class="modal-content">
-    <h4>Modal Header</h4>
+    <h4>Registered Employee</h4>
     <table class="striped">
       <thead>
         <tr>
@@ -56,7 +56,7 @@
           <th>Date Registered</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="displayRecord">
     
   
     

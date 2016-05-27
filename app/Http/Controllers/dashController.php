@@ -35,12 +35,12 @@ class dashController extends Controller
                         ->count();
       return Response($pending);
     }
-  public function getEmployee () {
-    $employee = DB::table('users')
-      ->select('fullname', 'created_at')
-      ->where('active', '=', 1)
-      ->get();
-    return Response($employee);
-  }
+    public function getEmployee () {
+      $employee = DB::table('users')
+        ->select('fullname', 'created_at')
+        ->where('active', '=', 1)
+        ->paginate(10);
+      return Response($employee);
+    }
 
 }
