@@ -1,0 +1,1 @@
+{"version":3,"sources":["admin.scss"],"names":[],"mappings":"AAAA;EACE,YAAY;EACZ,mBAAmB;EACnB,iBAAiB,EAElB;EADC;IAAM,YAAY,EAAI","file":"admin.css","sourcesContent":[".spinnerLoader {\r\n  width: 100%;\r\n  text-align: center;\r\n  margin-top: 20px;\r\n  img { width: 45px; }\r\n}\r\n"],"sourceRoot":"/source/"}

@@ -46,7 +46,7 @@
       </div>
     </div>
 <!-- Modal Structure -->
-<div id="modal1" class="modal">
+<div id="modal1" class="modal regEmployee">
   <div class="modal-content">
     <h4>Registered Employee</h4>
     <table class="striped">
@@ -56,19 +56,27 @@
           <th>Date Registered</th>
         </tr>
       </thead>
-      <tbody class="displayRecord">
-    
+      <tbody class="displayRecord" data-next-page="{{ $employee->nextPageUrl() }}">
+        
+        @foreach($employee as $employees)
+
+        <tr>
+          <td>{{ $employees->fullname }}</td>
+          <td class="regDate">{{ $employees->created_at }}</script></td>
+        </tr>
+
+        @endforeach
   
-    
       </tbody>
     </table>
-  </div>
-  <div class="modal-footer">
-    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"></a>
+    <div class="spinnerLoader">
+      <img src="images/loading.gif" alt="">
+    </div>
   </div>
 </div>
     
   </div>
     </section>
 <script src="js/dashboard.js"></script>
+
 @stop

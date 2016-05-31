@@ -19,10 +19,10 @@ class manageController extends Controller
   
     public function index() {
       $title = 'Manage Accounts | Tracking System';
-      $users = DB::table('users')->get();
-    
+      $users = DB::table('users')
+                        ->select('id', 'fullname', 'email', 'position', 'department', 'active')
+                        ->get();
       return View::make('admin.manage', compact('title', 'users'));
-
     }
   
     public function updateActive (Request $request, $id) {

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use DB;
 use View;
@@ -17,9 +16,20 @@ class dashController extends Controller
       $this->middleware('auth');
     }
   
-    public function index() {
-      $title = 'DashBoard Tracking System';
-      return View::make('admin.dashboard', compact('title'));
+  public function index(Request $request) {
+    $title = 'DashBoard Tracking System';
+    $employee = DB::table('users')
+      ->select('fullname', 'created_at')
+      ->where('active', '=', 1)
+      ->paginate(10);
+      
+    if($request->ajax()) {
+      return [
+        'employees' => $employee,
+        'next_page' => $employee->nextPageUrl()
+      ];
+    }
+      return View::make('admin.dashboard', compact('title', 'employee'));
     }
   
     public function getRegisteredEmployee () {
@@ -35,12 +45,6 @@ class dashController extends Controller
                         ->count();
       return Response($pending);
     }
-    public function getEmployee () {
-      $employee = DB::table('users')
-        ->select('fullname', 'created_at')
-        ->where('active', '=', 1)
-        ->paginate(10);
-      return Response($employee);
-    }
+
 
 }

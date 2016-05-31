@@ -20,10 +20,9 @@
 
     <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="css/style.min.css" type="text/css" rel="stylesheet" media="screen,projection">
-
-
+    <link rel="stylesheet" href="css/admin.css" type="text/css">
     <link href="css/custom/custom.min.css" type="text/css" rel="stylesheet" media="screen,projection">
-
+    
     <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="js/plugins/jvectormap/jquery-jvectormap.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
@@ -121,6 +120,7 @@
             <li class="bold active"><a href="{{ url('/admin') }}" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Dashboard</a>
             </li>
             <li class="bold"><a href="{{ url('/manageaccount') }}" class="waves-effect waves-cyan"><i class="mdi-device-now-widgets"></i> Manage Account</a>
+            <li class="bold"><a href="{{ url('/calendar') }}" class="waves-effect waves-cyan"><i class="mdi-device-now-widgets"></i> Calendar</a>
             </li>
             <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-editor-border-all"></i> Settings</a>
               <div class="collapsible-body">
