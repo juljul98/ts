@@ -9,7 +9,7 @@ use View;
 use Response;
 use Session;
 
-class dashController extends Controller
+class DashController extends Controller
 {
     public function __construct()
     {

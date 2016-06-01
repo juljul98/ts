@@ -5,6 +5,19 @@
     $('.sideNav li:nth-child(2)').addClass('active').siblings().removeClass('active');
 </script>
 <section id="content">
+  <div id="breadcrumbs-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m12 l12">
+          <h5 class="breadcrumbs-title">Manage Account</h5>
+          <ol class="breadcrumbs">
+            <li><a href="{{ url('/admin') }}">Dashboard</a></li>
+            <li class="active">Manage Account</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="container">
     <table id="data-table" class="responsive-table display" cellspacing="0">
       <thead>
@@ -39,11 +52,7 @@
          @endforeach
       </tbody>
     </table>
-    
   </div>
 </section>
-
 <script src="js/manageAccount.js"></script>
-
-
 @stop

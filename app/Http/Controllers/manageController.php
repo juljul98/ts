@@ -9,7 +9,7 @@ use DB;
 use View;
 use App\User;
 
-class manageController extends Controller
+class ManageController extends Controller
 {
   
   public function __construct()

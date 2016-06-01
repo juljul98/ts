@@ -19,84 +19,81 @@
         revert: true,      // will cause the event to go back to its
         revertDuration: 0  //  original position after the drag
       });
-
     });
 
-
     /* initialize the calendar
+    
     -----------------------------------------------------------------*/
+    $.ajax({
+      type: 'get',
+      url: base_url + 'calendar/getData',
+      data: {
+        //            "title": title,
+        //            "color": color,
+        //            "start_date": start_date
+      },
+      success: function(data) {
+        var loop = data.length;
+        for( x=0; x < loop; x++ ){
+          var colo = data[x].color;
+          
+        }
+        alert(colo);
+          
+
+      }
+    });
     $('#calendar').fullCalendar({
       header: {
         left: 'prev,next today',
         center: 'title',
         right: 'month,basicWeek,basicDay'
       },
-      defaultDate: '2015-05-12',
       editable: true,
-      droppable: true, // this allows things to be dropped onto the calendar
-      eventLimit: true, // allow "more" link when too many events
-      events: [
-        {
-          title: 'All Day Event',
-          start: '2015-05-01',
-          color: '#9c27b0'
-        },
-        {
-          title: 'Long Event',
-          start: '2015-05-07',
-          end: '2015-05-10',
-          color: '#e91e63'
-        },
-        {
-          id: 999,
-          title: 'Repeating Event',
-          start: '2015-05-09T16:00:00',
-          color: '#ff1744'
-        },
-        {
-          id: 999,
-          title: 'Repeating Event',
-          start: '2015-05-16T16:00:00',
-          color: '#aa00ff'
-        },
-        {
-          title: 'Conference',
-          start: '2015-05-3',
-          end: '2015-05-5',
-          color: '#01579b'
-        },
-        {
-          title: 'Meeting',
-          start: '2015-05-12T10:30:00',
-          end: '2015-05-12T12:30:00',
-          color: '#2196f3'
-        },
-        {
-          title: 'Lunch',
-          start: '2015-05-12T12:00:00',
-          color: '#ff5722'
-        },
-        {
-          title: 'Meeting',
-          start: '2015-05-12T14:30:00',
-          color: '#4caf50'
-        },
-        {
-          title: 'Happy Hour',
-          start: '2015-05-12T17:30:00',
-          color: '#03a9f4'
-        },
-        {
-          title: 'Dinner',
-          start: '2015-05-12T20:00:00',
-          color: '#009688'
-        },
-        {
-          title: 'Birthday Party',
-          start: '2015-05-13T07:00:00',
-          color: '#00bcd4'
+      droppable: true,
+      events: [{
+        title : 'any',
+        start : '2016-06-06',
+        color : '#000'
+      }],
+ 
+      drop: function (start, end, allDay, delta) { //Save Data
+        var title = $(this).text();
+        var color = rgb2hex($(this).css('background-color'));
+        var start_date = start.format();
+        $.ajax({
+          type: 'post',
+          url: base_url + 'calendar/saveData',
+          data: {
+//            "title": title,
+//            "color": color,
+//            "start_date": start_date
+          },
+          success: function(response) {
+            if (response == 'Save') {
+              alert('Pumasok sa Database Nigga');
+            } else {
+              alert('Hindi Pumasok Nigga');
+            }
+          }
+        });
+        function rgb2hex(rgb){
+          rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
+          return (rgb && rgb.length === 4) ? "#" +
+            ("0" + parseInt(rgb[1],10).toString(16)).slice(-2) +
+            ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
+            ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
         }
-      ]
+      },
+      eventDrop: function(event, delta, revertFunc) {
+        alert(event.title + " was dropped on " + event.start.format());
+
+//        if (!confirm("Are you sure about this change?")) {
+//          revertFunc();
+//        }
+
+      }
+      
     });
-    
+  
   });

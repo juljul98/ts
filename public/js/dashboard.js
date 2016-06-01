@@ -38,11 +38,10 @@ $(document).ready(function(){
       
       if(page !== null) {
 
-  //      clearTimeout( $.data( this, "scrollCheck" ) );
-  //      $.data( this, "scrollCheck", setTimeout(function() {
-          var divHeight = $('.modal-content').outerHeight(true) ;
+          var divHeight = $('.modal-content').outerHeight(true) - 1 ;
           var offsets = $('.regEmployee').scrollTop() + $('.regEmployee').height();
             if (offsets >= divHeight) {
+
                     $.get(page, function(data){
                       var url = data.next_page;
                       var dataEmp = data.employees.data;
@@ -66,12 +65,11 @@ $(document).ready(function(){
              }
           }
         });
+  
   function convertDate() {
     $('.regDate').each(function(){
       $(this).text(moment($(this).text()).format('MMMM Do YYYY, h:mm:ss a'));
     });
   }
-    convertDate();
- 
-  
+  convertDate();
 });

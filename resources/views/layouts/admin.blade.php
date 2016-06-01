@@ -6,23 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="msapplication-tap-highlight" content="no">
-    <meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google. ">
-    <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template,">
+    <meta name="description" content="Tracking System">
+    <meta name="keywords" content="Tracking System">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $title }}</title>
-
-    <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
-
-    <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
-
-    <meta name="msapplication-TileColor" content="#00bcd4">
-    <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
 
     <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="css/style.min.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link rel="stylesheet" href="css/admin.css" type="text/css">
     <link href="css/custom/custom.min.css" type="text/css" rel="stylesheet" media="screen,projection">
-    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="js/plugins/jvectormap/jquery-jvectormap.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
@@ -37,15 +30,13 @@
 
   <body>
     <!-- Start Page Loading -->
+<!--
     <div id="loader-wrapper">
       <div id="loader"></div>
       <div class="loader-section section-left"></div>
       <div class="loader-section section-right"></div>
     </div>
-    <!-- End Page Loading -->
-
-    <!-- //////////////////////////////////////////////////////////////////////////// -->
-
+-->
     <!-- START HEADER -->
     <header id="header" class="page-topbar">
       <!-- start header nav-->
@@ -54,10 +45,10 @@
           <div class="nav-wrapper">
             <ul class="right hide-on-med-and-down">
 
-              <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light notifButton" data-activates="notifications-dropdown"><i class="mdi-social-notifications"><small class="notification-badge"></small></i>
+              <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light notifButton" data-activates="notifications-dropdown"><i class="material-icons">notifications<small class="notification-badge"></small></i>
                 </a>
               </li>
-              <li><a href="#" data-activates="chat-out" class="waves-effect waves-block waves-light chat-collapse"><i class="mdi-communication-chat"></i></a>
+              <li><a href="#" data-activates="chat-out" class="waves-effect waves-block waves-light chat-collapse"><i class="material-icons">comment</i></a>
               </li>
               <ul id="notifications-dropdown" class="dropdown-content" style="white-space: nowrap; position: absolute; top: 64px; right: 60px; opacity: 1;">
                 <li>
@@ -117,15 +108,15 @@
         
         <li class="no-padding">
           <ul class="collapsible collapsible-accordion sideNav">
-            <li class="bold active"><a href="{{ url('/admin') }}" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Dashboard</a>
+            <li class="bold active"><a href="{{ url('/admin') }}" class="waves-effect waves-cyan"><i class="material-icons">dashboard</i> Dashboard</a>
             </li>
-            <li class="bold"><a href="{{ url('/manageaccount') }}" class="waves-effect waves-cyan"><i class="mdi-device-now-widgets"></i> Manage Account</a>
-            <li class="bold"><a href="{{ url('/calendar') }}" class="waves-effect waves-cyan"><i class="mdi-device-now-widgets"></i> Calendar</a>
+            <li class="bold"><a href="{{ url('/manageaccount') }}" class="waves-effect waves-cyan"><i class="material-icons">account_circle</i> Manage Account</a>
+            <li class="bold"><a href="{{ url('/calendar') }}" class="waves-effect waves-cyan"><i class="material-icons">perm_contact_calendar</i> Calendar</a>
             </li>
-            <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-editor-border-all"></i> Settings</a>
+            <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="material-icons">settings</i> Settings</a>
               <div class="collapsible-body">
                 <ul>
-                  <li><a href="table-basic.html">Department</a>
+                  <li><a href="table-basic.html">Departmenkt</a>
                   </li>
                   <li><a href="table-data.html">Position</a>
                   </li>

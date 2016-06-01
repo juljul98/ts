@@ -47,7 +47,7 @@ class AuthController extends Controller
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
   
-    public function index (Request $request) {
+    public function index () {
       
         return view('auth.login');
       
@@ -92,7 +92,7 @@ class AuthController extends Controller
       }
     }
   
-    public function registration (Request $request){
+    public function registration (){
 
       $files = array(
         'empno'      => Input::get('empno'),

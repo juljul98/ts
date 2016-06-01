@@ -19,14 +19,19 @@ Route::post('/saveData', 'Auth\AuthController@registration');
 
 //Admin Route Level 1
 
-  Route::get('/admin', 'dashController@index');
-  Route::post('/admin/getRegisteredEmployee', 'dashController@getRegisteredEmployee');
-  Route::post('/admin/getPendingEmployee', 'dashController@getPendingEmployee');
-  Route::post('/admin/getNotification', 'dashController@getNotification');
-  Route::post('/manageaccount/seenNotification', 'dashController@seenNotification');
-  Route::get('/manageaccount', 'manageController@index');
-  Route::post('/manageaccount/getRecord', 'manageController@getRecord');
-  Route::post('/manageaccount/updateActive/{id}', 'manageController@updateActive');
+  Route::get('/admin', 'DashController@index');
+  Route::post('/admin/getRegisteredEmployee', 'DashController@getRegisteredEmployee');
+  Route::post('/admin/getPendingEmployee', 'DashController@getPendingEmployee');
+  Route::post('/admin/getNotification', 'DashController@getNotification');
+  
+  Route::post('/manageaccount/seenNotification', 'DashController@seenNotification');
+  Route::get('/manageaccount', 'ManageController@index');
+  Route::post('/manageaccount/getRecord', 'ManageController@getRecord');
+  Route::post('/manageaccount/updateActive/{id}', 'ManageController@updateActive');
+  
+  Route::get('/calendar', 'CalendarController@index');
+  Route::post('/calendar/saveData', 'CalendarController@saveCalendar');
+  Route::get('/calendar/getData', 'CalendarController@getSaveCalendar');
 
 
 // Admin Close
