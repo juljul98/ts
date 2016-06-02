@@ -5,6 +5,8 @@
 </script>
 <section id="content">
   <link href="js/plugins/fullcalendar/css/fullcalendar.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="js/plugins/sweetalert/sweetalert.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="js/plugins/spectrum/spectrum.css" type="text/css" rel="stylesheet" media="screen,projection">
   <!--breadcrumbs start-->
   <div id="breadcrumbs-wrapper">
     <!-- Search for small screen -->
@@ -31,21 +33,31 @@
   <div class="container">
     <div class="section">
 
-      <div id="full-calendar">              
+      <div id="full-calendar">
         <div class="row">
           <div class="col s12 m4 l3">
-            <div id="external-events">    
-              <h4 class="header">Draggable Events</h4>
-              <div class="fc-event cyan ui-draggable ui-draggable-handle">March Invoices</div>
-              <div class="fc-event teal ui-draggable ui-draggable-handle">Call Emy</div>
-              <div class="fc-event cyan darken-1 ui-draggable ui-draggable-handle">Dinner with Team</div>
-              <div class="fc-event cyan accent-4 ui-draggable ui-draggable-handle">Meeting with Support Team</div>
-              <div class="fc-event teal accent-4 ui-draggable ui-draggable-handle">Meeting with Sales Team</div>
-              <div class="fc-event light-blue accent-3 ui-draggable ui-draggable-handle">Design an iOS App</div>
-              <div class="fc-event light-blue accent-4 ui-draggable ui-draggable-handle">Company Party</div>
+            <h4 class="header">List of Events</h4>
+            <div id="external-events">
+              <div class="list">
+                <div class="fc-event" style="background-color: #ff0000">Birthday</div>
+              </div>
               <p>
                 <input id="drop-remove" type="checkbox">
                 <label for="drop-remove">remove after drop</label>
+              </p>
+              <p>
+                <input type="text" id="event-title" class="evnt event-title">
+                <label for="event-title">Title</label>
+              </p>
+              <p>
+                <textarea class="evnt event-description" id="event-descriptio" cols="30" rows="10"></textarea>
+                <label for="event-description">Description</label>
+              </p>
+              <p>
+                <input type="text" id="colorPicker" class="evnt event-color">
+              </p>
+              <p>
+                <button class="waves-effect waves-light btn teal newEvent">New Event</button>
               </p>
             </div>
           </div>
@@ -65,4 +77,7 @@
 <script type="text/javascript" src="js/plugins/fullcalendar/lib/moment.min.js"></script>
 <script type="text/javascript" src="js/plugins/fullcalendar/js/fullcalendar.min.js"></script>
 <script type="text/javascript" src="js/plugins/fullcalendar/fullcalendar-script.js"></script>
+<script type="text/javascript" src="js/plugins/sweetalert/sweetalert.min.js"></script>
+<script type="text/javascript" src="js/plugins/spectrum/spectrum.js"></script>
+
 @stop

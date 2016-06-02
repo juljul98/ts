@@ -9,6 +9,7 @@ use App\Calendar;
 use Input;
 use DB;
 use Response;
+use Validator;
 
 class CalendarController extends Controller
 {
@@ -18,12 +19,35 @@ class CalendarController extends Controller
     }
   
     public function saveCalendar() {
-      $calendar = new Calendar;
-      $calendar->title = Input::get('title');
-      $calendar->color = Input::get('color');
-      $calendar->start_date = Input::get('start_date');
-      $calendar->save();
-      return response('Save');
+      
+      
+      $files = [
+        'title' => Input::get('title'),
+        'description' => Input::get('description'),
+        'start_date' => Input::get('start_date')
+      ];
+
+      $rules = [
+        'title' => 'required',
+        'start_date' => 'required'
+      ];
+      
+      $validator = Validator::make($files, $rules);
+      
+        if($validator->fails()) {
+          return response('Error');
+        } else {
+          $calendar = new Calendar;
+          $calendar->title = Input::get('title');
+          $calendar->description = Input::get('description');
+          $calendar->color = Input::get('color');
+          $calendar->start_date = Input::get('start_date');
+          $calendar->save();
+          return response('Save');
+        }
+      
+      
+
     }
   
     public function getSaveCalendar() {
