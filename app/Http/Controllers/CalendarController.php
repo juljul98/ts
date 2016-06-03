@@ -20,7 +20,6 @@ class CalendarController extends Controller
   
     public function saveCalendar() {
       
-      
       $files = [
         'title' => Input::get('title'),
         'description' => Input::get('description'),
@@ -45,14 +44,17 @@ class CalendarController extends Controller
           $calendar->save();
           return response('Save');
         }
-      
-      
-
     }
   
     public function getSaveCalendar() {
+      
       $getData = DB::table('calendar')->get();
       return response($getData);
-      
+    }
+  
+    public function deleteEvent($id) {
+      $calendar = Calendar::find($id);
+      $calendar->delete();
+      return response('Delete');
     }
 }

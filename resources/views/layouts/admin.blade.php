@@ -30,13 +30,11 @@
 
   <body>
     <!-- Start Page Loading -->
-<!--
     <div id="loader-wrapper">
       <div id="loader"></div>
       <div class="loader-section section-left"></div>
       <div class="loader-section section-right"></div>
     </div>
--->
     <!-- START HEADER -->
     <header id="header" class="page-topbar">
       <!-- start header nav-->
@@ -108,18 +106,15 @@
         
         <li class="no-padding">
           <ul class="collapsible collapsible-accordion sideNav">
-            <li class="bold active"><a href="{{ url('/admin') }}" class="waves-effect waves-cyan"><i class="material-icons">dashboard</i> Dashboard</a>
+            <li class="bold"><a href="{{ url('/admin') }}" class="waves-effect waves-cyan"><i class="material-icons">dashboard</i> Dashboard</a>
             </li>
             <li class="bold"><a href="{{ url('/manageaccount') }}" class="waves-effect waves-cyan"><i class="material-icons">account_circle</i> Manage Account</a>
             <li class="bold"><a href="{{ url('/calendar') }}" class="waves-effect waves-cyan"><i class="material-icons">perm_contact_calendar</i> Calendar</a>
             </li>
             <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="material-icons">settings</i> Settings</a>
               <div class="collapsible-body">
-                <ul>
-                  <li><a href="table-basic.html">Departmenkt</a>
-                  </li>
-                  <li><a href="table-data.html">Position</a>
-                  </li>
+                <ul class="cBody">
+                  <li><a href="{{ url('/department') }}">Department/Position</a></li>
                 </ul>
               </div>
             </li>
@@ -213,13 +208,6 @@
       <script type="text/javascript" src="js/plugins/data-tables/data-tables-script.js"></script>
       <script type="text/javascript" src="js/plugins/moment/moment.js"></script>
       <script type="text/javascript" src="js/adminscript.js"></script>
-
-
-
-
- 
-
-
-
+      
       </body>
     </html>

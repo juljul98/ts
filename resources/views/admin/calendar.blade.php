@@ -9,11 +9,6 @@
   <link href="js/plugins/spectrum/spectrum.css" type="text/css" rel="stylesheet" media="screen,projection">
   <!--breadcrumbs start-->
   <div id="breadcrumbs-wrapper">
-    <!-- Search for small screen -->
-    <div class="header-search-wrapper grey hide-on-large-only">
-      <i class="mdi-action-search active"></i>
-      <input name="Search" class="header-search-input z-depth-2" placeholder="Explore Materialize" type="text">
-    </div>
     <div class="container">
       <div class="row">
         <div class="col s12 m12 l12">
@@ -27,8 +22,6 @@
     </div>
   </div>
   <!--breadcrumbs end-->
-
-
   <!--start container-->
   <div class="container">
     <div class="section">
@@ -36,10 +29,10 @@
       <div id="full-calendar">
         <div class="row">
           <div class="col s12 m4 l3">
-            <h4 class="header">List of Events</h4>
+            <h4 class="header">Create Events</h4>
             <div id="external-events">
               <div class="list">
-                <div class="fc-event" style="background-color: #ff0000">Birthday</div>
+                
               </div>
               <p>
                 <input id="drop-remove" type="checkbox">
@@ -76,7 +69,7 @@
 <script type="text/javascript" src="js/plugins/fullcalendar/lib/jquery-ui.custom.min.js"></script>
 <script type="text/javascript" src="js/plugins/fullcalendar/lib/moment.min.js"></script>
 <script type="text/javascript" src="js/plugins/fullcalendar/js/fullcalendar.min.js"></script>
-<script type="text/javascript" src="js/plugins/fullcalendar/fullcalendar-script.js"></script>
+<script type="text/javascript" src="js/calendar.js"></script>
 <script type="text/javascript" src="js/plugins/sweetalert/sweetalert.min.js"></script>
 <script type="text/javascript" src="js/plugins/spectrum/spectrum.js"></script>
 

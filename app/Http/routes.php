@@ -32,7 +32,9 @@ Route::post('/saveData', 'Auth\AuthController@registration');
   Route::get('/calendar', 'CalendarController@index');
   Route::post('/calendar/saveData', 'CalendarController@saveCalendar');
   Route::get('/calendar/getData', 'CalendarController@getSaveCalendar');
+  Route::delete('/calendar/removeData/{id}', 'CalendarController@deleteEvent');
 
+  Route::any('/department', 'DepartmentController@index');
 
 // Admin Close
 

@@ -1,5 +1,8 @@
 @extends('layouts.admin')
 @section('content')
+<script>
+  $('.sideNav li:nth-child(1)').addClass('active').siblings().removeClass('active');
+</script>
     <section id="content">
         <div class="container">
           <div id="card-stats">
