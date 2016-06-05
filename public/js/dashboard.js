@@ -1,7 +1,10 @@
 $(document).ready(function(){
 //  ../images relative
-//  /images   absolute  
-
+//  /images   absolute 
+    var page = $('.displayRecord').data('next-page');
+        if (page == '') {
+                $('.spinnerLoader').hide();            
+        }
   
   $('#modal').leanModal();
   function registeredEmployee () {
@@ -63,7 +66,7 @@ $(document).ready(function(){
                     });
 
              }
-          }
+          } 
         });
   
   function convertDate() {

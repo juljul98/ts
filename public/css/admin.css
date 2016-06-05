@@ -6,7 +6,7 @@ body.loaded #loader-wrapper {
   -moz-transition: opacity 1s ease-in-out !important;
   -ms-transition: opacity 1s ease-in-out !important;
   -o-transition: opacity 1s ease-in-out !important;
-  opacity: 0 !important; }
+  display: none !important; }
 
 .spinnerLoader {
   width: 100%;
