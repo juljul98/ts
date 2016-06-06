@@ -301,7 +301,7 @@
 
                 </tbody>
               </table>
-              <div class="spinnerLoader">
+              <div class="spinnerLoaderDash">
                 <img src="images/loading.gif" alt="">
               </div>
             </div>

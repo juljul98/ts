@@ -8,22 +8,25 @@ body.loaded #loader-wrapper {
   -o-transition: opacity 1s ease-in-out !important;
   display: none !important; }
 
-.prev.disabled a {
-  pointer-events: none; }
+.mb40 {
+  margin-bottom: 40px; }
 
-.next.disabled a {
+.next.disabled a, .countpager.disabled a, .prev.disabled a {
   pointer-events: none; }
 
 .spinnerLoader {
-  height: 80px; }
+  position: fixed;
+  top: 40%;
+  left: 50%; }
   .spinnerLoader img {
-    display: none; }
+    display: none;
+    height: 80px; }
 
-.spinnerLoader {
+.spinnerLoaderDash {
   width: 100%;
   text-align: center;
   margin-top: 20px; }
-  .spinnerLoader img {
+  .spinnerLoaderDash img {
     width: 45px; }
 
 .evntDesc {

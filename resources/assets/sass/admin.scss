@@ -10,20 +10,20 @@ body.loaded #loader-wrapper {
   display: none!important;
 }
 
-.prev.disabled a {
-    pointer-events: none;
+.mb40 {
+  margin-bottom: 40px;
 }
 
-.next.disabled a {
-    pointer-events: none;
-}
-
-.spinnerLoader {
-    height: 80px;
-img { display: none; }    
+.next.disabled a, .countpager.disabled a, .prev.disabled a {
+  pointer-events: none;
 }
 
 .spinnerLoader {
+    position: fixed; top: 40%; left: 50%; ;
+  img { display: none; height: 80px }
+}
+
+.spinnerLoaderDash {
   width: 100%;
   text-align: center;
   margin-top: 20px;

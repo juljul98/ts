@@ -3,7 +3,7 @@ $(document).ready(function(){
 //  /images   absolute 
     var page = $('.displayRecord').data('next-page');
         if (page == '') {
-                $('.spinnerLoader').hide();            
+                $('.spinnerLoaderDash').hide();            
         }
   
   $('#modal').leanModal();
@@ -61,7 +61,7 @@ $(document).ready(function(){
                       $('.displayRecord').append(html);
                       $('.displayRecord').data('next-page', url);
                       if (data.next_page == null) {
-                        $('.spinnerLoader').hide();
+                        $('.spinnerLoaderDash').hide();
                       }
                     });
 
