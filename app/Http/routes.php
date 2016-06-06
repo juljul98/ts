@@ -24,7 +24,7 @@ Route::post('/saveData', 'Auth\AuthController@registration');
   Route::post('/admin/getPendingEmployee', 'DashController@getPendingEmployee');
   Route::post('/admin/getNotification', 'DashController@getNotification');
   
-  Route::post('/manageaccount/seenNotification', 'DashController@seenNotification');
+ 
   Route::get('/manageaccount', 'ManageController@index');
   Route::post('/manageaccount/getRecord', 'ManageController@getRecord');
   Route::post('/manageaccount/updateActive/{id}', 'ManageController@updateActive');

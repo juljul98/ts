@@ -78,7 +78,7 @@
            <div class="row">
              <div class="input-field col l8 s10 offset-l2 offset-s1">
                <button type="submit" class="waves-effect waves-light btn teal">
-                 <i class="material-icons">people</i>&nbsp;&nbsp;&nbsp;<span style="vertical-align: top;">Login</span>
+                 <i class="material-icons">people</i>&nbsp;&nbsp;&nbsp;<span style="vertical-align: top;">Register</span>
                </button>
              </div>
            </div>

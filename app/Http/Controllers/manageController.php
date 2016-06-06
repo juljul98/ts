@@ -17,12 +17,23 @@ class ManageController extends Controller
     $this->middleware('auth');
   }
   
-    public function index() {
+    public function index(Request $request) {
       $title = 'Manage Accounts | Tracking System';
-      $users = DB::table('users')
+      $employees = DB::table('users')
                         ->select('id', 'fullname', 'email', 'position', 'department', 'active')
-                        ->get();
-      return View::make('admin.manage', compact('title', 'users'));
+                        ->orderBy('id', 'desc')
+                        ->paginate(1);
+        if($request->ajax()) {
+          return [
+            'employees' => $employees,
+            'next_page' => $employees->nextPageUrl(),
+            'prev_page' => $employees->previousPageUrl()
+              
+          ];
+        }
+        
+      return view('admin.manage', compact('title', 'employees'));
+        
     }
   
     public function updateActive (Request $request, $id) {

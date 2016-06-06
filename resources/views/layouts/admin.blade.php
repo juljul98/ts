@@ -21,9 +21,10 @@
     <link href="js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
 
     <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>
-    <script>var base_url = 'http://localhost:8000/';  $.ajaxSetup({
-    headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    <script>var base_url = 'http://localhost:8000/';  
+    $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
   });</script>
   </head>
@@ -204,8 +205,6 @@
       <script type="text/javascript" src="js/plugins.min.js"></script>
 
       <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-      <script type="text/javascript" src="js/plugins/data-tables/js/jquery.dataTables.min.js"></script>
-      <script type="text/javascript" src="js/plugins/data-tables/data-tables-script.js"></script>
       <script type="text/javascript" src="js/plugins/moment/moment.js"></script>
       <script type="text/javascript" src="js/adminscript.js"></script>
       
