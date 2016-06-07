@@ -10,6 +10,7 @@ use Input;
 use DB;
 use Response;
 use Validator;
+use Auth;
 
 class CalendarController extends Controller
 {
@@ -37,6 +38,7 @@ class CalendarController extends Controller
           return response('Error');
         } else {
           $calendar = new Calendar;
+            $calendar->empid = Auth::user()->id;
           $calendar->title = Input::get('title');
           $calendar->description = Input::get('description');
           $calendar->color = Input::get('color');
@@ -48,7 +50,9 @@ class CalendarController extends Controller
   
     public function getSaveCalendar() {
       
-      $getData = DB::table('calendar')->get();
+      $getData = DB::table('calendar')
+                            ->orWhere('empid', '=', Auth::user()->id)
+                            ->get();
       return response($getData);
     }
   

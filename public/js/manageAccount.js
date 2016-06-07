@@ -159,10 +159,6 @@ $(document).ready(function(){
         $('.countpager:first').addClass('active disabled');
         $('.spinnerLoader img').hide();
         
-
-
-        
-
         if (data.next_page == null) {
           $('.spinnerLoader img').hide();
           $('.next').removeClass('active').addClass('disabled');
@@ -175,13 +171,10 @@ $(document).ready(function(){
           $('.prev').removeClass('disabled');
         } if (data.employees.total == 0) {
           $('.pagination').hide();
-          $('<h1 class="result" style="text-align:center">No Result Found</h1>').insertAfter('.pagination');
+          $('<h1 class="result" style="text-align:center">No Result Found</h1>').insertAfter('.pagerLinks');
         }
       }
     });
-    
-    
-    
     
   });
     

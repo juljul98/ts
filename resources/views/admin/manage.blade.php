@@ -64,7 +64,7 @@
       
       </tbody>
     </table>
- <div>
+ <div class="pagerLinks">
     
         @if ($employees->lastPage() > 1)
           <ul class="pagination">
