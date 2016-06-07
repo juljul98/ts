@@ -179,8 +179,8 @@ $(document).ready(function() {
         },
         success: function(response) {
           if (response == 'Save') {
-            swal("Save the Date", title + " successfully saved", "success");
             $('#calendar').fullCalendar('refetchEvents');
+            swal("Save the Date", title + " successfully saved", "success");
           }
         }
         

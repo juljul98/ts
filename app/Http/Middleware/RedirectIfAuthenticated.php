@@ -17,10 +17,16 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::guard($guard)->check()) {
-            return redirect('/login');
+      // Sample of Protecting Routes
+   
+      if (Auth::guard($guard)->check()) {
+        if (Auth::user($guard)->userlevel == 1) {
+          return redirect('/admin');
         }
-
+        return redirect('/login');
+      }
+      
+      
         return $next($request);
     }
 }

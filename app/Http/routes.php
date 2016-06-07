@@ -12,42 +12,40 @@
 */
 
 Route::auth();
-
-//Login Route
-Route::any('/auth', 'Auth\AuthController@authenticate');
-Route::post('/saveData', 'Auth\AuthController@registration');
-
-//Admin Route Level 1
-
-  Route::get('/admin', 'DashController@index');
-  Route::post('/admin/getRegisteredEmployee', 'DashController@getRegisteredEmployee');
-  Route::post('/admin/getPendingEmployee', 'DashController@getPendingEmployee');
-  Route::post('/admin/getNotification', 'DashController@getNotification');
-  
- 
-  Route::get('/manageaccount', 'ManageController@index');
-  Route::post('/manageaccount/getRecord', 'ManageController@getRecord');
-  Route::post('/manageaccount/updateActive/{id}', 'ManageController@updateActive');
-  
-  Route::get('/calendar', 'CalendarController@index');
-  Route::post('/calendar/saveData', 'CalendarController@saveCalendar');
-  Route::get('/calendar/getData', 'CalendarController@getSaveCalendar');
-  Route::delete('/calendar/removeData/{id}', 'CalendarController@deleteEvent');
-
-  Route::any('/department', 'DepartmentController@index');
-
-// Admin Close
-
-//Associate Route Level 2
-
-// Associate Close
-
-
 Route::controllers([
   'auth' => 'Auth\AuthController',
   'password' => 'Auth\PasswordController',
 ]);
 
-Route::any('/home', 'homeController@index');
+//Login Route
+Route::any('/auth', 'Auth\AuthController@authenticate');
+Route::post('/saveData', 'Auth\AuthController@registration');
 Route::get('/', 'Auth\AuthController@index');
 
+//Admin Route Level 1
+Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'Administrator'], function(){
+  // Dashboard
+  Route::get('/admin', 'DashController@index');
+  Route::post('/admin/getRegisteredEmployee', 'DashController@getRegisteredEmployee');
+  Route::post('/admin/getPendingEmployee', 'DashController@getPendingEmployee');
+  Route::post('/admin/getNotification', 'DashController@getNotification');
+  // Manage Account
+  Route::get('/manageaccount', 'ManageController@index');
+  Route::post('/manageaccount/getRecord', 'ManageController@getRecord');
+  Route::post('/manageaccount/updateActive/{id}', 'ManageController@updateActive');
+  // Calendar
+  Route::get('/calendar', 'CalendarController@index');
+  Route::post('/calendar/saveData', 'CalendarController@saveCalendar');
+  Route::get('/calendar/getData', 'CalendarController@getSaveCalendar');
+  Route::delete('/calendar/removeData/{id}', 'CalendarController@deleteEvent');
+});
+
+// User and Admin Route
+
+//User Route Level 3
+Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'User'], function(){
+  //Home
+  Route::any('/home', 'HomeController@index');
+});
+
+// https://gist.github.com/drawmyattention/8cb599ee5dc0af5f4246. Credit to this.

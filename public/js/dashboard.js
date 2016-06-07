@@ -14,9 +14,6 @@ $(document).ready(function(){
       data : {},
       success : function(response){
         $('.registeredEmp').text(response);
-        setTimeout(function(){
-          registeredEmployee();
-        }, 1000);
       }
     })
   }
@@ -27,11 +24,7 @@ $(document).ready(function(){
       url  : base_url + 'admin/getPendingEmployee',
       data : {},
       success : function(response){
-        
         $('.pendingEmp').text(response);
-        setTimeout(function(){
-          getPendingEmployee();
-        }, 1000);
       }
     })
   }

@@ -42,19 +42,15 @@ class AuthController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
   
     public function index () {
-      
         return view('auth.login');
-      
     }
   
-    public function authenticate()
-    {
+    public function authenticate() {
       $credentials_username_ad = array(
         'username' => Input::get('username'),
         'password' => Input::get('password'),
@@ -92,7 +88,7 @@ class AuthController extends Controller
       }
     }
   
-    public function registration (){
+    public function registration () {
 
       $files = array(
         'empno'      => Input::get('empno'),

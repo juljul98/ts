@@ -1,7 +1,27 @@
 // @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
+#login {
+  margin: 8% 0 0 6%;
+
+}
+
+main {
+  background-color: #f7f7f7;
+}
+
+label {
+  color: #666!important;
+}
+
+.collection {
+  background-color: #fff;
+  -webkit-box-shadow: 2px 17px 26px -1px rgba(0,0,0,0.46);
+  -moz-box-shadow: 2px 17px 26px -1px rgba(0,0,0,0.46);
+  box-shadow: 2px 17px 26px -1px rgba(0,0,0,0.46);
+}
+
 html, body {
-  height: 100%;
+  background-color: #f7f7f7;
   font-family: 'Lato'; }
 
 .errorTitle {
@@ -32,7 +52,9 @@ nav {
   padding: 0!important;
 }
 
-
+.frmLogin {
+  margin-top: 20px;
+}
 
 
 .fntWhite {

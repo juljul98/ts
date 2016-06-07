@@ -48,15 +48,10 @@ class ManageController extends Controller
             'employees' => $employees,
             'next_page' => $employees->nextPageUrl(),
             'prev_page' => $employees->previousPageUrl()
-
           ];
         }
-        
       }
-        
-        
       return view('admin.manage', compact('title', 'employees'));
-        
     }
   
     public function updateActive (Request $request, $id) {

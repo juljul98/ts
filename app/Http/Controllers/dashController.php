@@ -8,6 +8,7 @@ use DB;
 use View;
 use Response;
 use Session;
+use Auth;
 
 class DashController extends Controller
 {
@@ -17,6 +18,7 @@ class DashController extends Controller
     }
   
   public function index(Request $request) {
+    
     $title = 'DashBoard Tracking System';
     $employee = DB::table('users')
       ->select('fullname', 'created_at')

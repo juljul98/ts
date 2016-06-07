@@ -1,5 +1,18 @@
+#login {
+  margin: 8% 0 0 6%; }
+
+main {
+  background-color: #f7f7f7; }
+
+label {
+  color: #666 !important; }
+
+.collection {
+  background-color: #fff;
+  box-shadow: 2px 17px 26px -1px rgba(0, 0, 0, 0.46); }
+
 html, body {
-  height: 100%;
+  background-color: #f7f7f7;
   font-family: 'Lato'; }
 
 .errorTitle {
@@ -25,6 +38,9 @@ nav {
 
 .row .col {
   padding: 0 !important; }
+
+.frmLogin {
+  margin-top: 20px; }
 
 .fntWhite {
   color: #fff; }

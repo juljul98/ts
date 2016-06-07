@@ -21,8 +21,8 @@ $(document).ready(function(){
           $('.frmLogin').parent().addClass('shake animated');
           setTimeout(function(){
             $('.frmLogin').parent().removeClass('shake animated');
-            $('.loginError').fadeOut();
-          }, 5000);
+          }, 500);
+
         }
       }
     });
