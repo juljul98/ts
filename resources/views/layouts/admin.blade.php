@@ -107,15 +107,21 @@
         
         <li class="no-padding">
           <ul class="collapsible collapsible-accordion sideNav">
-            <li class="bold"><a href="{{ url('/admin') }}" class="waves-effect waves-cyan"><i class="material-icons">dashboard</i> Dashboard</a>
-            </li>
+            @if (Auth::user()->userlevel == 1)
+            <li class="bold"><a href="{{ url('/admin') }}" class="waves-effect waves-cyan"><i class="material-icons">dashboard</i> Dashboard</a></li>
             <li class="bold"><a href="{{ url('/manageaccount') }}" class="waves-effect waves-cyan"><i class="material-icons">account_circle</i> Manage Account</a>
+            @endif
+            @if (Auth::user()->userlevel == 3)
+            <li class="bold"><a href="{{ url('/home') }}" class="waves-effect waves-cyan"><i class="material-icons">dashboard</i> Home</a></li>
+            @endif
             <li class="bold"><a href="{{ url('/calendar') }}" class="waves-effect waves-cyan"><i class="material-icons">perm_contact_calendar</i> Calendar</a>
             </li>
             <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="material-icons">settings</i> Settings</a>
               <div class="collapsible-body">
                 <ul class="cBody">
+                   @if (Auth::user()->userlevel == 1)
                   <li><a href="{{ url('/department') }}">Department/Position</a></li>
+                    @endif
                 </ul>
               </div>
             </li>

@@ -23,6 +23,9 @@ class RedirectIfAuthenticated
         if (Auth::user($guard)->userlevel == 1) {
           return redirect('/admin');
         }
+        if (Auth::user($guard)->userlevel == 3) {
+          return redirect('/home');
+        }
         return redirect('/login');
       }
       

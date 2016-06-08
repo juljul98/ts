@@ -6,7 +6,8 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\User;
 use View;
-
+use Auth;
+use Input;
 
 
 class HomeController extends Controller
@@ -28,9 +29,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-
-      return view::make('home');
-        
+      $title = ucwords(Auth::user()->fullname . ' | Home');
+      Input::flash();
+      return view::make('user.home', compact('title'));
     }
   
     

@@ -34,18 +34,22 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'Administrator'], fu
   Route::post('/manageaccount/getRecord', 'ManageController@getRecord');
   Route::post('/manageaccount/updateActive/{id}', 'ManageController@updateActive');
   // Calendar
+
+});
+
+// User and Admin Route
+Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['Administrator', 'User']], function(){
   Route::get('/calendar', 'CalendarController@index');
   Route::post('/calendar/saveData', 'CalendarController@saveCalendar');
   Route::get('/calendar/getData', 'CalendarController@getSaveCalendar');
   Route::delete('/calendar/removeData/{id}', 'CalendarController@deleteEvent');
 });
-
-// User and Admin Route
-
 //User Route Level 3
 Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'User'], function(){
   //Home
   Route::any('/home', 'HomeController@index');
+  Route::any('/message', 'ChatController@index');
+
 });
 
 // https://gist.github.com/drawmyattention/8cb599ee5dc0af5f4246. Credit to this.
