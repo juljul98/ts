@@ -21,6 +21,7 @@
     <link href="js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
 
     <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
     <script>var base_url = 'http://localhost:8000/';  
     $.ajaxSetup({
         headers: {
@@ -206,8 +207,6 @@
     </div>
 
       <!-- jQuery Library -->
-
-      <script type="text/javascript" src="js/materialize.min.js"></script>
       <script type="text/javascript" src="js/plugins.min.js"></script>
 
       <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>

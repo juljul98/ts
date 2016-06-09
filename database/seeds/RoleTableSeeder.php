@@ -21,12 +21,12 @@ class RoleTableSeeder extends Seeder
       Role::create([
         'id'            => 1,
         'name'          => 'Administrator',
-        'description'   => 'Full access to create, edit, and update companies, and orders.'
+        'description'   => 'Full access to the System'
       ]);
       Role::create([
         'id'            => 2,
         'name'          => 'Manager',
-        'description'   => 'Ability to create new companies and orders, or edit and update any existing ones.'
+        'description'   => 'Manage Leaves, Overtime and many more'
       ]);
       Role::create([
         'id'            => 3,

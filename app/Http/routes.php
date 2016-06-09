@@ -34,7 +34,9 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'Administrator'], fu
   Route::post('/manageaccount/getRecord', 'ManageController@getRecord');
   Route::post('/manageaccount/updateActive/{id}', 'ManageController@updateActive');
   // Calendar
-
+  Route::get('/department', 'DepartmentController@index');
+  Route::get('/department/getRole', 'DepartmentController@getRole');
+  
 });
 
 // User and Admin Route

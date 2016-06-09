@@ -22,6 +22,7 @@ $(document).ready(function(){
           setTimeout(function(){
             $('.frmLogin').parent().removeClass('shake animated');
           }, 500);
+          $(this).siblings.val('');
 
         }
       }

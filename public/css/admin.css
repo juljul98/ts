@@ -1,12 +1,44 @@
 body #loader-wrapper {
-  opacity: 1 !important; }
-
-body.loaded #loader-wrapper {
   -webkit-transition: opacity 1s ease-in-out !important;
   -moz-transition: opacity 1s ease-in-out !important;
   -ms-transition: opacity 1s ease-in-out !important;
   -o-transition: opacity 1s ease-in-out !important;
+  opacity: 1 !important; }
+
+body.loaded #loader-wrapper {
   display: none !important; }
+
+select {
+  display: block !important; }
+
+.drpDown {
+  position: relative !important;
+  top: -60px !important; }
+
+.positionPanel, .evntDesc {
+  display: none; }
+
+.positionBtn i {
+  -ms-user-select: none;
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none; }
+
+.positionPanel {
+  margin-top: -13px !important; }
+  .positionPanel i {
+    -ms-user-select: none;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none; }
+
+.addLbl {
+  position: relative;
+  top: -4px; }
 
 .mb40 {
   margin-bottom: 40px; }
@@ -28,9 +60,6 @@ body.loaded #loader-wrapper {
   margin-top: 20px; }
   .spinnerLoaderDash img {
     width: 45px; }
-
-.evntDesc {
-  display: none; }
 
 .fc-event-container .optionED {
   display: none;

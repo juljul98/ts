@@ -71,18 +71,28 @@ class AuthController extends Controller
         'password' => Input::get('password'),
         'active' => 1,
         'userlevel' => '3');
+      
+      
+      if (Input::has('remember')) {
+        $expires = time() + 60 * 60 * 24 * 365; // one year
+      } else {
+        $expires = time() + 60 * 60 * 2; // two hours
+      }
 
       // USER LEVEL 1
       if (Auth::attempt( $credentials_username_ad , true)) {
+        
         return response('1');
       } elseif (Auth::attempt( $credentials_email_ad , true)) {
+        
         return response('1');
       } elseif (Auth::attempt( $credentials_username_as , true)) {
+        
         return response('3');
       } elseif (Auth::attempt( $credentials_email_as , true)) {
+        
         return response('3');
       }
-        
       else {
         return response('invalid');
       }

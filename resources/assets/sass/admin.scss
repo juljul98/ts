@@ -1,13 +1,55 @@
+@mixin transition($val) {
+  -webkit-transition: opacity $val ease-in-out!important;
+  -moz-transition: opacity $val ease-in-out!important;
+  -ms-transition: opacity $val ease-in-out!important;
+  -o-transition: opacity $val ease-in-out!important;
+}
+
+@mixin unselectable($val) {
+  user-select: $val;
+  -moz-user-select: $val;
+  -khtml-user-select: $val;
+  -webkit-user-select: $val;
+  -o-user-select: $val;
+}
+
 body #loader-wrapper {
+  @include transition(1s);
   opacity: 1!important;
 }
 
 body.loaded #loader-wrapper {
-  -webkit-transition: opacity 1s ease-in-out!important;
-  -moz-transition: opacity 1s ease-in-out!important;
-  -ms-transition: opacity 1s ease-in-out!important;
-  -o-transition: opacity 1s ease-in-out!important;
+
   display: none!important;
+}
+
+select {
+  display: block!important;
+}
+
+.drpDown {
+  position: relative!important;
+  top: -60px!important;
+}
+
+.positionPanel, .evntDesc {
+  display: none;
+}
+
+.positionBtn i {
+  @include unselectable(none);
+}
+
+.positionPanel {
+  margin-top: -13px!important;
+  i {
+    @include unselectable(none);
+  }
+}
+
+.addLbl {
+  position: relative;
+  top: -4px;
 }
 
 .mb40 {
@@ -30,9 +72,6 @@ body.loaded #loader-wrapper {
   img { width: 45px; }
 }
 
-.evntDesc {
-  display: none;
-}
 
 .fc-event-container {
   .optionED { display: none; margin: 0!important; width: 50%; float: right; text-align: right;

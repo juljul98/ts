@@ -28,10 +28,10 @@
 
       <div id="full-calendar">
         <div class="row">
-          <div class="col s12 m4 l3">
+          <div class="col s12 m4 l3 card-panel">
             <h4 class="header">Create Events</h4>
             <div id="external-events">
-              <div class="list">
+              <div class="list card-panel">
                 
               </div>
               <p>
