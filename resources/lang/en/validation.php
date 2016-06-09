@@ -108,6 +108,8 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+      'empno' => 'Employee Number'
+    ],
 
 ];
