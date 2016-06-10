@@ -36,7 +36,8 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'Administrator'], fu
   // Calendar
   Route::get('/department', 'DepartmentController@index');
   Route::get('/department/getRole', 'DepartmentController@getRole');
-  
+  Route::post('/department/saveDepartment', 'DepartmentController@saveDepartment');
+  Route::post('/department/savePosition', 'DepartmentController@savePosition');
 });
 
 // User and Admin Route

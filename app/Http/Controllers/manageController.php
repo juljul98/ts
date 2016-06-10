@@ -25,7 +25,7 @@ class ManageController extends Controller
       if ( !empty($searchFrm) ) {
         
         $employees = DB::table('users')
-          ->select('id','empno', 'fullname', 'email', 'position', 'department', 'active')
+          ->select('id', 'fullname', 'email', 'position', 'department', 'active')
           ->orderBy('id', 'desc')
           ->orWhere('fullname', 'LIKE', '%'. $searchFrm . '%')
           ->orWhere('empno' , 'LIKE', '%'. $searchFrm . '%')

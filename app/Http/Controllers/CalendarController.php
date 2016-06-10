@@ -49,10 +49,9 @@ class CalendarController extends Controller
     }
   
     public function getSaveCalendar() {
-      
       $getData = DB::table('calendar')
-                            ->orWhere('empid', '=', Auth::user()->id)
-                            ->get();
+            ->orWhere('empid', '=', Auth::user()->id)
+            ->get();
       return response($getData);
     }
   

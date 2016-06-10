@@ -109,7 +109,19 @@ return [
     */
 
     'attributes' => [
-      'empno' => 'Employee Number'
+      // Registration
+      'empno' => 'Employee number',
+      'username' => 'Username',
+      'fullname' => 'Full Name',
+      'email' => 'E-mail Address',
+      'password' => 'Password',
+      'password_confirmation' => 'Password',
+      'gender' => 'Gender',
+      'department' => 'Department',
+      'position' => 'Position',
+      
+      'departmentname' => 'Department name',
+      'positionname' => 'Position name'
     ],
 
 ];

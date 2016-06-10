@@ -22,7 +22,7 @@
 
     <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
-    <script>var base_url = 'http://localhost:8000/';  
+    <script>var base_url = 'http://localhost:8000/';
     $.ajaxSetup({
         headers: {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
