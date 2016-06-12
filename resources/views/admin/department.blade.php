@@ -37,21 +37,11 @@
             </div>
           </form>
         </div>
-        <div id="card-alert" class="card red lighten-5 departmentAlertSuccess" style="display: none;">
-          <div class="card-content white-text">
+        <div class="departmentAlertSuccess" style="display: none;">
             <p>SUCCESS : The page has been added.</p>
-          </div>
-          <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
         </div>
-        <div id="card-alert" class="card red lighten-5 departmentAlertError" style="display: none;">
-          <div class="card-content red-text">
+        <div class="departmentAlertError" style="display: none;">
             <p>DANGER : The daily report has failed</p>
-          </div>
-          <button type="button" class="close red-text" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
         </div>
       </div>
       <a class="btn-floating btn-large positionBtn">
@@ -59,21 +49,27 @@
       </a>
       <div class="row card-panel positionPanel">
         <form class="col s12 addPosition" action="{{ url('department/savePosition') }}">
-          <h4 class="header2">Choose Department and Position</h4>
+          <h4 class="header2">Choose Department and add Position</h4>
           <div class="row">
            <!-- department name -->
             <div class="input-field col s4 l7">
               <select name="departmentname" id="departmentname" class="departmentnameforposition">
                 @foreach($department as $list)
-                <option value="{{ $list->id }}">{{ $list->name }}</option>
+                <option value="{{ $list->id }}">{{ $list->departmentname }}</option>
                 @endforeach
               </select>
               <label for="departmentname" class="drpDown">Department Name</label>
+                <div class="positionAlertError dn" style="display: none;">
+                    <p>DANGER : The daily report has failed</p>
+                </div>
             </div>
             <!-- position name -->
             <div class="input-field col s4 l6">
               <input placeholder="Position Name" id="icon_prefix2" class="validate positionname" type="text" name="positionname">
               <label class="active" for="icon_prefix">Position Name</label>
+                <div class="positionAlertError pn" style="display: none;">
+                    <p>DANGER : The daily report has failed</p>
+                </div>
             </div>
             <!-- userlevel -->
             <div class="input-field col s4 l6">
@@ -83,6 +79,9 @@
               @endforeach
               </select>
               <label for="userlevel" class="drpDown">Permission Level</label>
+                <div class="positionAlertError ul" style="display: none;">
+                    <p>DANGER : The daily report has failed</p>
+                </div>
             </div>
             
             <div class="col l12">
@@ -90,6 +89,16 @@
             </div>
             <div class="input-field col s4 l7">
               <button class="btn cyan waves-effect waves-light" type="submit" name="action"><i class="material-icons">add_circle_outline</i><span class="addLbl">&nbsp;Add</span></button>
+            </div>
+            <div class="col l12">
+                <div id="card-alert" class="card green lighten-2 positionAlertSuccess" style="display: none;">
+                  <div class="card-content white-text">
+                    <p>SUCCESS : The page has been added.</p>
+                  </div>
+                  <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                  </button>
+                </div>
             </div>
           </div>
         </form>

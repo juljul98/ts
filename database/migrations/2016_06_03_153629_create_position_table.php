@@ -16,7 +16,7 @@ class CreatePositionTable extends Migration
             $table->increments('id');
             $table->integer('departmentid');
             $table->integer('userlevel');
-            $table->string('name', 100);
+            $table->string('positionname', 100)->unique();
             $table->timestamps();
         });
     }

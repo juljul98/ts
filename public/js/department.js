@@ -34,10 +34,11 @@ $(document).ready(function(){
       url : base_url + 'department/saveDepartment',
       data: { "departmentname" : departmentname },
       success : function(data) {
-        if(data == 'save') {
-          $('.departmentAlertSuccess').show();
+        if(data == 'Successfully Save') {
+          $('.departmentAlertSuccess').show().find('p').text(data);
         }
         else {
+          $('.departmentAlertSuccess').hide();
           $('.departmentAlertError').show().find('p').text(data.departmentname);
         }
       }
@@ -59,11 +60,16 @@ $(document).ready(function(){
         'userlevel' : userlevel
       },
       success : function(data) {
-        if (data == 'save') {
-
+        if (data == 'Successfully Save') {
+          $('.positionAlertSuccess').show().find('p').text(data)
           $('.departmentnameforposition').val(null);
           $('.positionname').val(null);
           $('.userlevel').val(null);
+        } else {
+          $('.positionAlertSuccess').hide();
+          $('.positionAlertError.dn').show().find('p').text(data.departmentname);
+          $('.positionAlertError.pn').show().find('p').text(data.positionname);
+          $('.positionAlertError.ul').show().find('p').text(data.userlevel);
         }
       }
     });

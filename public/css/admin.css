@@ -1,9 +1,11 @@
-body #loader-wrapper {
-  -webkit-transition: opacity 1s ease-in-out !important;
-  -moz-transition: opacity 1s ease-in-out !important;
-  -ms-transition: opacity 1s ease-in-out !important;
-  -o-transition: opacity 1s ease-in-out !important;
-  opacity: 1 !important; }
+body {
+  overflow-y: scroll; }
+  body #loader-wrapper {
+    -webkit-transition: opacity 1s ease-in-out !important;
+    -moz-transition: opacity 1s ease-in-out !important;
+    -ms-transition: opacity 1s ease-in-out !important;
+    -o-transition: opacity 1s ease-in-out !important;
+    opacity: 1 !important; }
 
 body.loaded #loader-wrapper {
   display: none !important; }

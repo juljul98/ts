@@ -37,7 +37,7 @@ class DepartmentController extends Controller
   
     function getDepartment() {
       $department = DB::table('department')
-        ->select('id','name')
+        ->select('id','departmentname')
         ->get();
       return $department;
     }
@@ -47,7 +47,7 @@ class DepartmentController extends Controller
         'departmentname' => $request->input('departmentname')
       );
       $rule = array(
-        'departmentname' => 'required'
+        'departmentname' => 'required|unique:department'
       );
       $validation = Validator::make($file, $rule);
       
@@ -57,9 +57,9 @@ class DepartmentController extends Controller
       else {
         $departmentname = $request->input('departmentname');
         $department = new Department;
-        $department->name = ucwords($departmentname);
+        $department->departmentname = ucwords($departmentname);
         $department->save();
-        return response('save');
+        return response('Successfully Save');
       }
     }
     public function savePosition(Request $request) {
@@ -70,7 +70,7 @@ class DepartmentController extends Controller
       );
       $rule = array(
         'departmentname' => 'required',
-        'positionname' => 'required',
+        'positionname' => 'required|unique:position',
         'userlevel' => 'required'
       );
       $validation = Validator::make($file, $rule);
@@ -80,9 +80,9 @@ class DepartmentController extends Controller
         $position = new Position;
         $position->departmentid = $request->input('departmentname');
         $position->userlevel = $request->input('userlevel');
-        $position->name = $request->input('positionname');
+        $position->positionname = $request->input('positionname');
         $position->save();
-        return response('save');
+        return response('Successfully Save');
       }
     }
   

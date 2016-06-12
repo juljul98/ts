@@ -13,9 +13,12 @@
   -o-user-select: $val;
 }
 
-body #loader-wrapper {
-  @include transition(1s);
-  opacity: 1!important;
+body {
+  overflow-y: scroll;
+  #loader-wrapper {
+    @include transition(1s);
+    opacity: 1!important;
+  }
 }
 
 body.loaded #loader-wrapper {
