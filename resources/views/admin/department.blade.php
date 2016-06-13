@@ -20,6 +20,7 @@
     </div>
   </div>
   <div class="row">
+<!--   left-->
     <div class="col s12 m12 l6">
       <div class="card-panel">
         <div class="row">
@@ -54,9 +55,11 @@
            <!-- department name -->
             <div class="input-field col s4 l7">
               <select name="departmentname" id="departmentname" class="departmentnameforposition">
+               
                 @foreach($department as $list)
                 <option value="{{ $list->id }}">{{ $list->departmentname }}</option>
                 @endforeach
+              
               </select>
               <label for="departmentname" class="drpDown">Department Name</label>
                 <div class="positionAlertError dn" style="display: none;">
@@ -103,6 +106,25 @@
           </div>
         </form>
       </div>
+    </div>
+<!--    Right-->
+   <div class="col l6">
+     <ul class="collapsible popout" data-collapsible="accordion">
+       @foreach($department as $list)
+        <li>
+          <div class="collapsible-header"><i class="material-icons">filter_drama</i>{{ $list->departmentname }}</div>
+          <div class="collapsible-body">
+            <ul>
+              @foreach($records as $record)
+                @if($list->id == $record->departmentid)
+                <li>{{ $record->positionname }}</li>
+                @endif
+              @endforeach
+            </ul>
+          </div>
+       </li>
+        @endforeach
+      </ul>
     </div>
   </div>
 </section>

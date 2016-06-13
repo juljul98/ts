@@ -23,7 +23,8 @@ class DepartmentController extends Controller
           ->select('id', 'name')
           ->get();
       $department = $this->getDepartment();
-      return view::make('admin.department', compact('title', 'role', 'department'));
+      $records = $this->getAllRecord();
+      return view::make('admin.department', compact('title', 'role', 'department', 'records'));
     }
   
     public function getRole(Request $request) {
@@ -55,7 +56,7 @@ class DepartmentController extends Controller
         return response ($validation->messages());
       }
       else {
-        $departmentname = $request->input('departmentname');
+        $departmentname = htmlspecialchars($request->input('departmentname'));
         $department = new Department;
         $department->departmentname = ucwords($departmentname);
         $department->save();
@@ -80,10 +81,23 @@ class DepartmentController extends Controller
         $position = new Position;
         $position->departmentid = $request->input('departmentname');
         $position->userlevel = $request->input('userlevel');
-        $position->positionname = $request->input('positionname');
+        $position->positionname = htmlspecialchars($request->input('positionname'));
         $position->save();
         return response('Successfully Save');
       }
+    }
+  
+    public function getDepartmentNameForPosition() {
+      $department = $this->getDepartment();
+      return $department;
+    }
+    
+    public function getAllRecord() {
+        $records = DB::table('department')
+            ->join('position', 'department.id', '=', 'position.departmentid')
+            ->select()
+            ->get();
+        return $records;
     }
   
 }

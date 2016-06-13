@@ -38,9 +38,9 @@ class CalendarController extends Controller
           return response('Error');
         } else {
           $calendar = new Calendar;
-            $calendar->empid = Auth::user()->id;
+          $calendar->empid = Auth::user()->id;
           $calendar->title = Input::get('title');
-          $calendar->description = Input::get('description');
+          $calendar->description = htmlspecialchars(Input::get('description'));
           $calendar->color = Input::get('color');
           $calendar->start_date = Input::get('start_date');
           $calendar->save();

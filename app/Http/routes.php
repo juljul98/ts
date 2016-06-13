@@ -38,6 +38,8 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'Administrator'], fu
   Route::get('/department/getRole', 'DepartmentController@getRole');
   Route::post('/department/saveDepartment', 'DepartmentController@saveDepartment');
   Route::post('/department/savePosition', 'DepartmentController@savePosition');
+  Route::post('/department/getDepartmentNameForPosition', 'DepartmentController@getDepartmentNameForPosition');
+  Route::post('/department/getAllRecord', 'DepartmentController@getAllRecord');
 });
 
 // User and Admin Route

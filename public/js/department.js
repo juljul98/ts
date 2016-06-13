@@ -36,6 +36,7 @@ $(document).ready(function(){
       success : function(data) {
         if(data == 'Successfully Save') {
           $('.departmentAlertSuccess').show().find('p').text(data);
+          getDepartmentNameForPosition();
         }
         else {
           $('.departmentAlertSuccess').hide();
@@ -74,5 +75,35 @@ $(document).ready(function(){
       }
     });
   });
+  
+  function getDepartmentNameForPosition () {
+    var html = '';
+    $.ajax({
+      type: 'post',
+      url: base_url + 'department/getDepartmentNameForPosition',
+      data: {},
+      success: function(data) {
+        var loop = data.length;
+        for(x = 0; x<loop; x++) {
+          html += '<option value="'+ data[x].id +'">'+ data[x].departmentname +'</option>';
+        }
+        $('.departmentnameforposition').html(html);
+      }
+    });
+  }
+  
+  function loadAllRecord() {
+    $.ajax({
+      type: 'post',
+      url: base_url + 'department/getAllRecord',
+      data: {},
+      success: function(data) {
+        console.log(data);
+      }
+    });
+  }
+  
+  loadAllRecord();
+  getDepartmentNameForPosition();
   
 });
