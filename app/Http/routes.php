@@ -26,8 +26,8 @@ Route::get('/', 'Auth\AuthController@index');
 Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'Administrator'], function(){
   // Dashboard
   Route::get('/admin', 'DashController@index');
-  Route::post('/admin/getRegisteredEmployee', 'DashController@getRegisteredEmployee');
-  Route::post('/admin/getPendingEmployee', 'DashController@getPendingEmployee');
+  Route::get('/admin/getRegisteredEmployee', 'DashController@getRegisteredEmployee');
+  Route::get('/admin/getPendingEmployee', 'DashController@getPendingEmployee');
   Route::post('/admin/getNotification', 'DashController@getNotification');
   // Manage Account
   Route::get('/manageaccount', 'ManageController@index');

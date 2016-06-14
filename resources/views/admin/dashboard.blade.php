@@ -10,22 +10,24 @@
               <div class="col s12 m6 l3">
                 <div class="card">
                   <a href="" data-target="modal1" class="modal-trigger regEmp">
-                  <div class="card-content  green white-text">
-                    <p class="card-stats-title"><i class="material-icons">group</i> Registered Employee</p>
-                    <h4 class="card-stats-number registeredEmp"></h4>
-                    </p>
-                  </div>
+                    <div class="card-content  green white-text">
+                      <p class="card-stats-title"><i class="material-icons">group</i> Registered Employee</p>
+                      <h4 class="card-stats-number registeredEmp">{{ $regemployee }}</h4>
+                      </p>
+                    </div>
                   <div class="card-action  green darken-2"></div>
                   </a>
                 </div>
               </div>
               <div class="col s12 m6 l3">
                 <div class="card">
-                  <div class="card-content pink lighten-1 white-text">
-                    <p class="card-stats-title"><i class="material-icons">group_add</i> Pending Accounts</p>
-                    <h4 class="card-stats-number pendingEmp"></h4>
-                    </p>
-                  </div>
+                  <a href="" data-target="modal1" class="modal-trigger pendEmp">
+                    <div class="card-content pink lighten-1 white-text">
+                      <p class="card-stats-title"><i class="material-icons">group_add</i> Pending Accounts</p>
+                      <h4 class="card-stats-number pendingEmp">{{ $pendemployee }}</h4>
+                      </p>
+                    </div>
+                  </a>
                   <div class="card-action  pink darken-2">
                   </div>
                 </div>
@@ -288,16 +290,16 @@
                     <th>Date Registered</th>
                   </tr>
                 </thead>
-                <tbody class="displayRecord" data-next-page="{{ $employee->nextPageUrl() }}">
+                <tbody class="displayRecord" data-next-page="">
 
-                  @foreach($employee as $employees)
+                
 
-                  <tr>
-                    <td>{{ $employees->fullname }}</td>
-                    <td class="regDate">{{ $employees->created_at }}</script></td>
-                  </tr>
+             <!--      <tr>
+                    <td></td>
+                    <td class="regDate"></script></td>
+                  </tr> -->
 
-                  @endforeach
+             
 
                 </tbody>
               </table>
