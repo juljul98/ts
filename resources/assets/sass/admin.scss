@@ -21,8 +21,21 @@ body {
   }
 }
 
-body.loaded #loader-wrapper {
+.responsive-table tbody tr:hover {
+  background-color: #3498db;
+  color: #fff;
+  cursor: pointer;
+}
 
+.donught-wrap {
+  width: 65%;
+}
+
+#doughnut-chart-wrapper {
+  margin: 2% 0;
+}
+
+body.loaded #loader-wrapper {
   display: none!important;
 }
 
@@ -35,7 +48,7 @@ select {
   top: -60px!important;
 }
 
-.positionPanel, .evntDesc {
+.positionPanel, .evntDesc, .trending-bar-chart-wrapper {
   display: none;
 }
 

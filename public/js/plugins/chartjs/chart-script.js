@@ -4,7 +4,7 @@
 //var randomScalingFactor = function(){ return Math.round(Math.random()*10)};
 var trendingLineChart;
 var data = {
-	labels : ["Apple","Samsung","SONY","Motorola","Nokia","Microsoft","Xiaomi"],
+	labels : ["Jan","Feb","Mar","Apr","May","Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
 	datasets : [
 		{
 			label: "First dataset",
@@ -14,43 +14,17 @@ var data = {
 			pointStrokeColor : "#ffffff",
 			pointHighlightFill : "#ffffff",
 			pointHighlightStroke : "#ffffff",
-			data: [100, 50, 20, 40, 80, 50, 80]
-		},
-		{
-			label: "Second dataset",
-			fillColor : "rgba(128, 222, 234, 0.3)",
-			strokeColor : "#80deea",
-			pointColor : "#00bcd4",
-			pointStrokeColor : "#80deea",
-			pointHighlightFill : "#80deea",
-			pointHighlightStroke : "#80deea",
-			data: [60, 20, 90, 80, 50, 85, 40]
+			data: [100, 50, 20, 40, 80, 50, 80, 10, 9, 10, 11, 12]
 		}
 	]
 };
 
-setInterval(function(){
-  // Get a random index point
-  var indexToUpdate = Math.round(Math.random() * (data.labels.length-1));
-  if (typeof trendingLineChart != "undefined"){
-	  // Update one of the points in the second dataset
-	  if(trendingLineChart.datasets[0].points[indexToUpdate].value){
-	  		trendingLineChart.datasets[0].points[indexToUpdate].value = Math.round(Math.random() * 100);
-	  }
-	  if(trendingLineChart.datasets[1].points[indexToUpdate].value){
-	  		trendingLineChart.datasets[1].points[indexToUpdate].value = Math.round(Math.random() * 100);	
-	  }
-	  trendingLineChart.update();
-  }
-  	
-  
-}, 2000);
+
 
 
 /*
 Polor Chart Widget
 */
- 
 var doughnutData = [
 	{
 		value: 3000,
@@ -63,14 +37,7 @@ var doughnutData = [
 		color: "#46BFBD",
 		highlight: "#5AD3D1",
 		label: "Kitchen"
-	},
-	{
-		value: 1000,
-		color: "#FDB45C",
-		highlight: "#FFC870",
-		label: "Home"
 	}
-
 ];
 
 /*
@@ -144,119 +111,6 @@ function trendingRadarChartupdate() {
 	}
 }
 setInterval(trendingRadarChartupdate, 5000);
-		
-/*
-Pie chart 
-*/
-var pieData = [
-				{
-					value: 300,
-					color:"#F7464A",
-					highlight: "#FF5A5E",
-					label: "America"
-				},
-				{
-					value: 50,
-					color: "#46BFBD",
-					highlight: "#5AD3D1",
-					label: "Canada"
-				},
-				{
-					value: 100,
-					color: "#FDB45C",
-					highlight: "#FFC870",
-					label: "UK"
-				},
-				{
-					value: 40,
-					color: "#949FB1",
-					highlight: "#A8B3C5",
-					label: "Europe"
-				},
-				{
-					value: 120,
-					color: "#4D5360",
-					highlight: "#616774",
-					label: "Australia"
-				}
-
-			];
-/*
-Line Chart
-*/
-var lineChartData = {
-	labels : ["USA","UK","UAE","AUS","IN","SA"],
-	datasets : [
-		{
-			label: "My dataset",
-			fillColor : "rgba(255,255,255,0)",
-			strokeColor : "#fff",
-			pointColor : "#00796b ",
-			pointStrokeColor : "#fff",
-			pointHighlightFill : "#fff",
-			pointHighlightStroke : "rgba(220,220,220,1)",
-			data: [65, 45, 50, 30, 63, 45]
-		}
-	]
-
-}
-
-var polarData = [
-		{
-			value: 4800,
-			color:"#f44336",
-			highlight: "#FF5A5E",
-			label: "USA"
-		},
-		{
-			value: 6000,
-			color: "#9c27b0",
-			highlight: "#ce93d8",
-			label: "UK"
-		},
-		{
-			value: 1800,
-			color: "#3f51b5",
-			highlight: "#7986cb",
-			label: "Canada"
-		},
-		{
-			value: 4000,
-			color: "#2196f3 ",
-			highlight: "#90caf9",
-			label: "Austrelia"
-		},
-		{
-			value: 5500,
-			color: "#ff9800",
-			highlight: "#ffb74d",
-			label: "India"
-		},
-		{
-			value: 2100,
-			color: "#009688",
-			highlight: "#80cbc4",
-			label: "Brazil"
-		},
-		{
-			value: 5000,
-			color: "#00acc1",
-			highlight: "#4dd0e1",
-			label: "China"
-		},
-		{
-			value: 3500,
-			color: "#4caf50",
-			highlight: "#81c784",
-			label: "Germany"
-		}
-
-
-
-	];	
-		
-
-
 
 window.onload = function(){
 	var trendingLineChart = document.getElementById("trending-line-chart").getContext("2d");
