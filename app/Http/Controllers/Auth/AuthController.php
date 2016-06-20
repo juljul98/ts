@@ -12,7 +12,7 @@ use Input;
 use Form;
 use Auth;
 use Response;
-
+use Cookie;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -73,29 +73,29 @@ class AuthController extends Controller
         'userlevel' => '3');
       
       
-      if (Input::has('remember')) {
-        $expires = time() + 60 * 60 * 24 * 365; // one year
-      } else {
-        $expires = time() + 60 * 60 * 2; // two hours
-      }
 
       // USER LEVEL 1
       if (Auth::attempt( $credentials_username_ad , true)) {
-        
+        $this->cookies();
         return response('1');
       } elseif (Auth::attempt( $credentials_email_ad , true)) {
-        
+        $this->cookies();
         return response('1');
       } elseif (Auth::attempt( $credentials_username_as , true)) {
-        
+        $this->cookies();
         return response('3');
       } elseif (Auth::attempt( $credentials_email_as , true)) {
-        
+        $this->cookies();
         return response('3');
       }
       else {
         return response('invalid');
       }
+    }
+  
+    function cookies() {
+      $ckname = Auth::getRecallerName();
+      Cookie::queue($ckname, Cookie::get($ckname), 43200);
     }
   
     public function registration () {
