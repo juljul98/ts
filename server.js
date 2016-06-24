@@ -4,8 +4,9 @@ var io = require('socket.io')(server);
 var redis = require('redis');
 users = [];
 connections = [];
-  server.listen(8890);
-  console.log('running');
+server.listen(8890);
+  
+console.log('running');
   
   io.sockets.on('connection', function(socket){
      connections.push(socket);
