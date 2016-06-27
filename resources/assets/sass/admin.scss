@@ -19,6 +19,7 @@ body {
     @include transition(1s);
     opacity: 1!important;
   }
+  #modal1 { height: 511.688px!important; }
 }
 
 .responsive-table tbody tr:hover {

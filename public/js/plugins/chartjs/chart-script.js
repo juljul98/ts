@@ -2,25 +2,35 @@
 * Trending line chart
 */
 //var randomScalingFactor = function(){ return Math.round(Math.random()*10)};
+
+
+
+
+
+
+
+
 var trendingLineChart;
-var data = {
-	labels : ["Jan","Feb","Mar","Apr","May","Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-	datasets : [
-		{
-			label: "First dataset",
-			fillColor : "rgba(128, 222, 234, 0.6)",
-			strokeColor : "#ffffff",
-			pointColor : "#00bcd4",
-			pointStrokeColor : "#ffffff",
-			pointHighlightFill : "#ffffff",
-			pointHighlightStroke : "#ffffff",
-			data: [100, 50, 20, 40, 80, 50, 80, 10, 9, 10, 11, 12]
-		}
-	]
-};
+var data;
 
+$.getJSON( base_url + 'json/test.json', function(response) {
+   data = {
+    labels : ["Jan","Feb","Mar","Apr","May","Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    datasets : [
+      {
+        label: "First dataset",
+        fillColor : "rgba(128, 222, 234, 0.6)",
+        strokeColor : "#ffffff",
+        pointColor : "#00bcd4",
+        pointStrokeColor : "#ffffff",
+        pointHighlightFill : "#ffffff",
+        pointHighlightStroke : "#ffffff",
+        data: [response.empcount[0].count,response.empcount[1].count]
+      }
+    ]
+  };
 
-
+});
 
 /*
 Polor Chart Widget

@@ -47,14 +47,14 @@ $(document).ready(function(){
   $('.regEmployee').scroll(function(){
       var page = $('.displayRecord').data('next-page');
       if(page !== null) {
-          var divHeight = $('.modal-content').outerHeight(true) - 1 ;
+          var divHeight = $('.modal-content').outerHeight(true) ;
           var offsets = $('.regEmployee').scrollTop() + $('.regEmployee').height();
             if (offsets >= divHeight) {
                     $.get(page, function(data){
                       var url = data.next_page;
                       var dataEmp = data.employees.data;
                       var loops = dataEmp.length;
-                      console.log(data)
+
                       var html = '';
                       for (x = 0; x < loops; x++) {
                         html += '<tr>';
