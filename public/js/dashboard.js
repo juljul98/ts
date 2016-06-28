@@ -47,7 +47,7 @@ $(document).ready(function(){
   $('.regEmployee').scroll(function(){
       var page = $('.displayRecord').data('next-page');
       if(page !== null) {
-          var divHeight = $('.modal-content').outerHeight(true) ;
+          var divHeight = $('.modal-content').outerHeight(true) - 1;
           var offsets = $('.regEmployee').scrollTop() + $('.regEmployee').height();
             if (offsets >= divHeight) {
                     $.get(page, function(data){

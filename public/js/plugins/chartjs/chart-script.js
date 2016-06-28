@@ -3,18 +3,47 @@
 */
 //var randomScalingFactor = function(){ return Math.round(Math.random()*10)};
 
-
-
-
-
-
-
-
 var trendingLineChart;
-var data;
+var arraydata = [];
 
-$.getJSON( base_url + 'json/test.json', function(response) {
-   data = {
+  $('#yearHE').change(function() {
+    var arraydata = [];
+    var yearHE = $(this).val();
+    $('.yearCount').text(yearHE);
+    $.ajax({
+      type: 'get',
+      url: base_url + 'admin/getCountForChart',
+      data: { "yearHE": yearHE },
+      success: function(response) {
+        var count = response.empcount.length;
+        for(x = 0; x<count ; x++) {
+          var values = response.empcount[x];
+          arraydata.push(values);
+          $('.employeeCount tr:nth-child('+ (x+1) +') td:first').text(response.empcount[x]);
+          $('.totalcount').text(response.total);
+          console.log(arraydata);
+        }
+      }
+    });
+  });
+
+  var yearHE = $('#yearHE').val();
+  $.ajax({
+    type: 'get',
+    url: base_url + 'admin/getCountForChart',
+    data: { "yearHE": yearHE },
+    success: function(response) {
+      var count = response.empcount.length;
+      for(x = 0; x<count ; x++) {
+        var values = response.empcount[x];
+        arraydata.push(values);
+        $('.employeeCount tr:nth-child('+ (x+1) +') td:first').text(response.empcount[x]);
+        $('.totalcount').text(response.total);
+      }
+    }
+  });
+
+  var data = {
     labels : ["Jan","Feb","Mar","Apr","May","Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
     datasets : [
       {
@@ -25,14 +54,11 @@ $.getJSON( base_url + 'json/test.json', function(response) {
         pointStrokeColor : "#ffffff",
         pointHighlightFill : "#ffffff",
         pointHighlightStroke : "#ffffff",
-        data: [response.empcount[0].count,response.empcount[1].count]
+        data:  arraydata
       }
     ]
   };
-
-});
-
-/*
+  /*
 Polor Chart Widget
 */
 var doughnutData = [
@@ -200,7 +226,7 @@ window.onload = function(){
 		// 	responsive: true		
 		// });
 
-		var lineChart = document.getElementById("line-chart").getContext("2d");
+  var lineChart = document.getElementById("line-chart").getContext("2d");
 		window.lineChart = new Chart(lineChart).Line(lineChartData, {
 			scaleShowGridLines : false,
 			bezierCurve : false,

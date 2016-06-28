@@ -3,6 +3,8 @@
 <script>
   $('.sideNav li:nth-child(1)').addClass('active').siblings().removeClass('active');
 </script>
+
+
     <section id="content">
         <div class="container">
           <div id="card-stats">
@@ -62,6 +64,31 @@
                 <div class="card">
                   <div class="card-move-up waves-effect waves-block waves-light">
                     <div class="move-up cyan darken-1">
+                      <div>
+                        <span class="chart-title white-text">Hired Employees</span>
+                        <div class="chart-revenue cyan darken-2">
+                          <select name="yearHE" id="yearHE" value="{{ $thisyear }}">
+                            <?php
+                            for ($x=2015; $x<2030; $x++) {
+                              if ($x == $thisyear) {
+                                $year = "selected";
+                              }
+                              else {
+                                $year = "";
+                              }
+                              echo '<option value="'.$x.'" '.$year.'>'.$x.'</option>';
+                            }
+                            ?>
+                          </select>
+                        </div>
+                        <div class="switch chart-revenue-switch right">
+                          <label class="cyan-text text-lighten-5">
+                            Month
+                            <input type="checkbox">
+                            <span class="lever"></span> Year
+                          </label>
+                        </div>
+                      </div>
                       <div class="trending-line-chart-wrapper">
                         <canvas style="width: 820px; height: 191px;" width="820" id="trending-line-chart" height="191"></canvas>
                         <a class="btn-floating btn-move-up waves-effect waves-light darken-2 right"><i class="mdi-content-add activator"></i></a>
@@ -71,6 +98,7 @@
                   </div>
                   <div style="display: none; transform: translateY(0px);" class="card-reveal">
                     <span class="card-title grey-text text-darken-4">Registered Employee<i class="mdi-navigation-close right"></i></span>
+                    <p>For this <span class="yearCount">{{ $thisyear }}</span> the total head count of hired employees is <strong><span class="totalcount"></span></strong> </p>
                     <table class="responsive-table">
                       <thead>
                         <tr>
@@ -78,30 +106,54 @@
                           <th data-field="item-sold">Month</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody class="employeeCount">
                         <tr>
-                          <td>1</td>
+                          <td></td>
                           <td>January</td>
                         </tr>
                         <tr>
-                          <td>2</td>
+                          <td></td>
                           <td>February</td>
                         </tr>
                         <tr>
-                          <td>3</td>
+                          <td></td>
                           <td>March</td>
                         </tr>
                         <tr>
-                          <td>4</td>
+                          <td></td>
                           <td>April</td>
                         </tr>
                         <tr>
-                          <td>5</td>
+                          <td></td>
                           <td>May</td>
                         </tr>
                         <tr>
-                          <td>12</td>
+                          <td></td>
                           <td>June</td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td>July</td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td>August</td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td>September</td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td>October</td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td>November</td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td>December</td>
                         </tr>
                       </tbody>
                     </table>
@@ -171,7 +223,7 @@
           </div>
        
     </section>
-<script src="js/dashboard.js"></script>
 <script type="text/javascript" src="js/plugins/chartjs/chart.min.js"></script>
+<script src="js/dashboard.js"></script>
 <script type="text/javascript" src="js/plugins/chartjs/chart-script.js"></script>
 @stop

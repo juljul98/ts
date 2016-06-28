@@ -31,14 +31,15 @@
      </div>
    </div>
 
-    <table id="data-table" class="responsive-table display" cellspacing="0">
+    <table class="responsive-table display employeeTable" cellspacing="0">
       <thead>
         <tr>
           <th>FullName</th>
           <th>Email</th>
           <th>Position</th>
           <th>Department</th>
-          <th>Action</th>
+          <th>Active</th>
+          <th>Reset</th>
         </tr>
       </thead>
        <tbody class="loadRecord" data-next-page="{{ $employees->nextPageUrl() }}">
@@ -57,6 +58,9 @@
                  On
                </label>
              </div>
+           </td>
+           <td>
+             <div class="reset" data-idr="{{ $list->id }}"><a href="#"><i class="material-icons">vpn_key</i></a></div>
            </td>
          </tr>
             

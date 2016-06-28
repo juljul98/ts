@@ -21,25 +21,45 @@ class DashController extends Controller
   
     public function index(Request $request) {
       $title = 'DashBoard Tracking System';
-      $regemployee = DB::table('users')->where('active', '=', 1)->count();
+      $thisyear = Carbon::now()->year;
+      
+      $reg = DB::table('users')->where('active', '=', 1);
+      $regemployee = $reg->count();
       $pendemployee = DB::table('users')->where('active', '=', 0)->count();
-  //    $loop = $regemployee;
-  //    $empmonth = DB::table('users')->select('created_at')->get();
-  //    $special = array('-', ':', ' ');
-  //    $dt = Carbon::create( str_replace($special,  ',' , $empmonth[0]->created_at) );
-  //    echo $dt->toDayDateTimeString().'<br>';
-  //    for($x=0; $x<$loop; $x++) {
-  //        echo  date('Y', strtotime($empmonth[$x]->created_at)) .'<br>';
-  //    }
-      return View::make('admin.dashboard', compact('title', 'regemployee', 'pendemployee'));
+
+      return View::make('admin.dashboard', compact('title', 'reg', 'regemployee', 'pendemployee', 'thisyear'));
     }
   
-    public function getRegisteredEmployee (Request $request) {
+    public function getRegisteredEmployee(Request $request) {
      return $this->getQuery(1);
     }
     
-    public function getPendingEmployee (Request $request) {
+    public function getPendingEmployee(Request $request) {
       return $this->getQuery(0);
+    }
+  
+  public function getCountForChart(Request $request) {
+      $year = $request->input('yearHE');
+      $loop = 12;
+      $total_regpermonth = array();
+      for ($x=1; $x<=$loop; $x++) {
+        $empmonth = DB::table('users')
+          ->select('created_at')
+          ->where('active', '=', 1)
+          ->whereMonth('created_at', '=', $x)
+          ->whereYear('created_at', '=', $year)
+          ->count();
+        array_push($total_regpermonth, $empmonth);
+      }
+      $total_reg = DB::table('users')
+        ->select('created_at')
+        ->where('active', '=', 1)
+        ->whereYear('created_at', '=', $year)
+        ->count();
+      return [
+        'empcount' => $total_regpermonth,
+        'total' => $total_reg
+      ];
     }
   
     public function getQuery($val) {

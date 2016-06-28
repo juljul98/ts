@@ -19,77 +19,56 @@ body {
     @include transition(1s);
     opacity: 1!important;
   }
-  #modal1 { height: 511.688px!important; }
+  #modal1 { max-height: 511.688px!important; }
 }
-
-.responsive-table tbody tr:hover {
-  background-color: #3498db;
-  color: #fff;
-  cursor: pointer;
-}
-
 .donught-wrap {
   width: 65%;
 }
-
 #doughnut-chart-wrapper {
   margin: 2% 0;
 }
-
 body.loaded #loader-wrapper {
   display: none!important;
 }
-
 select {
   display: block!important;
 }
-
 .drpDown {
   position: relative!important;
   top: -60px!important;
 }
-
 .positionPanel, .evntDesc, .trending-bar-chart-wrapper {
   display: none;
 }
-
 .positionBtn i {
   @include unselectable(none);
 }
-
 .positionPanel {
   margin-top: -13px!important;
   i {
     @include unselectable(none);
   }
 }
-
 .addLbl {
   position: relative;
   top: -4px;
 }
-
 .mb40 {
   margin-bottom: 40px;
 }
-
 .next.disabled a, .countpager.disabled a, .prev.disabled a {
   pointer-events: none;
 }
-
 .spinnerLoader {
     position: fixed; top: 40%; left: 50%; ;
   img { display: none; height: 80px }
 }
-
 .spinnerLoaderDash {
   width: 100%;
   text-align: center;
   margin-top: 20px;
   img { width: 45px; }
 }
-
-
 .fc-event-container {
   .optionED { display: none; margin: 0!important; width: 50%; float: right; text-align: right;
     li {

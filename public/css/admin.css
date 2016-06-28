@@ -7,12 +7,7 @@ body {
     -o-transition: opacity 1s ease-in-out !important;
     opacity: 1 !important; }
   body #modal1 {
-    height: 511.688px !important; }
-
-.responsive-table tbody tr:hover {
-  background-color: #3498db;
-  color: #fff;
-  cursor: pointer; }
+    max-height: 511.688px !important; }
 
 .donught-wrap {
   width: 65%; }

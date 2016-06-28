@@ -35,7 +35,6 @@ $(document).ready(function(){
     });
   
     $('body').delegate('.next a', 'click',function(){
-
       $('.countpager.active').next().find('a').click().addClass('active disabled').siblings().removeClass('active disabled');
     });
     
@@ -75,6 +74,9 @@ $(document).ready(function(){
                         html += 'On';
                         html += '</label>';
                         html += '</div>';
+                        html += '</td>';
+                        html += '<td>';
+                        html += '<div class="reset" data-idr="' + dataEmp[x].id + '"><a href="#"><i class="material-icons">vpn_key</i></a></div>';
                         html += '</td>';
                         html += '</tr>';
                       }
@@ -133,6 +135,9 @@ $(document).ready(function(){
           html += 'On';
           html += '</label>';
           html += '</div>';
+          html += '</td>';
+          html += '<td>';
+          html += '<div class="reset" data-idr="' + dataEmp[x].id + '"><a href="#"><i class="material-icons">vpn_key</i></a></div>';
           html += '</td>';
           html += '</tr>';
         }
