@@ -30,36 +30,41 @@ class DashController extends Controller
       return View::make('admin.dashboard', compact('title', 'reg', 'regemployee', 'pendemployee', 'thisyear'));
     }
   
-    public function getRegisteredEmployee(Request $request) {
-     return $this->getQuery(1);
-    }
-    
-    public function getPendingEmployee(Request $request) {
-      return $this->getQuery(0);
-    }
+
   
-  public function getCountForChart(Request $request) {
-      $year = $request->input('yearHE');
-      $loop = 12;
-      $total_regpermonth = array();
-      for ($x=1; $x<=$loop; $x++) {
-        $empmonth = DB::table('users')
+    public function getCountForChart(Request $request) {
+        $year = $request->input('yearHE');
+        $loop = 12;
+        $total_regpermonth = array();
+        for ($x=1; $x<=$loop; $x++) {
+          $empmonth = DB::table('users')
+            ->select('created_at')
+            ->where('active', '=', 1)
+            ->whereMonth('created_at', '=', $x)
+            ->whereYear('created_at', '=', $year)
+            ->count();
+          array_push($total_regpermonth, $empmonth);
+        }
+        $total_reg = DB::table('users')
           ->select('created_at')
           ->where('active', '=', 1)
-          ->whereMonth('created_at', '=', $x)
           ->whereYear('created_at', '=', $year)
           ->count();
-        array_push($total_regpermonth, $empmonth);
-      }
-      $total_reg = DB::table('users')
-        ->select('created_at')
-        ->where('active', '=', 1)
-        ->whereYear('created_at', '=', $year)
-        ->count();
-      return [
-        'empcount' => $total_regpermonth,
-        'total' => $total_reg
-      ];
+        $reg_emp = $this->getRegisteredEmployee();
+        $pen_emp = $this->getPendingEmployee();
+        return [
+          'empcount' => $total_regpermonth,
+          'total' => $total_reg,
+          'registeredcount' => $reg_emp,
+          'pendingcount' => $pen_emp
+        ];
+    }
+  
+    public function getRegisteredEmployee() {
+      return $this->getQuery(1);
+    }
+    public function getPendingEmployee() {
+      return $this->getQuery(0);
     }
   
     public function getQuery($val) {

@@ -95,7 +95,7 @@ class AuthController extends Controller
   
     function cookies() {
       $ckname = Auth::getRecallerName();
-      Cookie::queue($ckname, Cookie::get($ckname), 43200);
+      Cookie::queue($ckname, Cookie::get($ckname), 99200);
     }
   
     public function registration () {

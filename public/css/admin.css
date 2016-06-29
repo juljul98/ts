@@ -71,6 +71,20 @@ select {
   .spinnerLoaderDash img {
     width: 45px; }
 
+.registered, .pending {
+  position: relative; }
+  .registered:before, .pending:before {
+    position: absolute;
+    top: 0;
+    left: -10px;
+    width: 20px;
+    height: 25px;
+    background-color: #2980b9;
+    content: ''; }
+
+.pending:before {
+  background-color: #27ae60; }
+
 .fc-event-container .optionED {
   display: none;
   margin: 0 !important;

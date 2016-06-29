@@ -30,6 +30,7 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'Administrator'], fu
   Route::get('/admin/getPendingEmployee', 'DashController@getPendingEmployee');
   Route::post('/admin/getNotification', 'DashController@getNotification');
   Route::get('/admin/getCountForChart', 'DashController@getCountForChart');
+  
   // Manage Account
   Route::get('/manageaccount', 'ManageController@index');
   Route::post('/manageaccount/getRecord', 'ManageController@getRecord');

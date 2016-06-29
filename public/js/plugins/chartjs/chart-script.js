@@ -5,27 +5,8 @@
 
 var trendingLineChart;
 var arraydata = [];
-
-  $('#yearHE').change(function() {
-    var arraydata = [];
-    var yearHE = $(this).val();
-    $('.yearCount').text(yearHE);
-    $.ajax({
-      type: 'get',
-      url: base_url + 'admin/getCountForChart',
-      data: { "yearHE": yearHE },
-      success: function(response) {
-        var count = response.empcount.length;
-        for(x = 0; x<count ; x++) {
-          var values = response.empcount[x];
-          arraydata.push(values);
-          $('.employeeCount tr:nth-child('+ (x+1) +') td:first').text(response.empcount[x]);
-          $('.totalcount').text(response.total);
-          console.log(arraydata);
-        }
-      }
-    });
-  });
+var sdata;
+var doughnutData;
 
   var yearHE = $('#yearHE').val();
   $.ajax({
@@ -39,77 +20,83 @@ var arraydata = [];
         arraydata.push(values);
         $('.employeeCount tr:nth-child('+ (x+1) +') td:first').text(response.empcount[x]);
         $('.totalcount').text(response.total);
+        var regemp = response.registeredcount.employees.total,
+            pendemp = response.pendingcount.employees.total
+        var result =  regemp + pendemp;
+        $('.totalEmp').text(result)
       }
+      sdata = {
+        labels : ["Jan","Feb","Mar","Apr","May","Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        datasets : [
+          {
+            label: "First dataset",
+            fillColor : "rgba(128, 222, 234, 0.6)",
+            strokeColor : "#ffffff",
+            pointColor : "#00bcd4",
+            pointStrokeColor : "#ffffff",
+            pointHighlightFill : "#ffffff",
+            pointHighlightStroke : "#ffffff",
+            data:  arraydata
+          }
+        ]
+      };
+      doughnutData = [
+        {
+          value: regemp,
+          color:"#2980b9",
+          highlight: "#3498db",
+          label: "Registered"
+        },
+        {
+          value: pendemp,
+          color: "#27ae60",
+          highlight: "#2ecc71",
+          label: "Pending"
+        }
+      ];
+      clineChart();
+      cdoughnut();
     }
   });
-
-  var data = {
-    labels : ["Jan","Feb","Mar","Apr","May","Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    datasets : [
-      {
-        label: "First dataset",
-        fillColor : "rgba(128, 222, 234, 0.6)",
-        strokeColor : "#ffffff",
-        pointColor : "#00bcd4",
-        pointStrokeColor : "#ffffff",
-        pointHighlightFill : "#ffffff",
-        pointHighlightStroke : "#ffffff",
-        data:  arraydata
-      }
-    ]
-  };
-  /*
-Polor Chart Widget
-*/
-var doughnutData = [
-	{
-		value: 3000,
-		color:"#F7464A",
-		highlight: "#FF5A5E",
-		label: "Mobile"
-	},
-	{
-		value: 500,
-		color: "#46BFBD",
-		highlight: "#5AD3D1",
-		label: "Kitchen"
-	}
-];
-
-/*
-Trending Bar Chart
-*/
-
-var dataBarChart = {
-    labels : ["JAN","FEB","MAR","APR","MAY","JUNE"],
-    datasets: [
-        {
-            label: "Bar dataset",
-            fillColor: "#46BFBD",
-            strokeColor: "#46BFBD",
-            highlightFill: "rgba(70, 191, 189, 0.4)",
-            highlightStroke: "rgba(70, 191, 189, 0.9)",
-            data: [6, 9, 8, 4, 6, 7]
+  $('#yearHE').change(function() {
+    arraydata = [];
+    var yearHE = $(this).val();
+    $('.yearCount').text(yearHE);
+    $.ajax({
+      type: 'get',
+      url: base_url + 'admin/getCountForChart',
+      data: { "yearHE": yearHE },
+      success: function(response) {
+        sdata = '';
+        var count = response.empcount.length;
+        for(x = 0; x<count ; x++) {
+          var values = response.empcount[x];
+          arraydata.push(values);
+          $('.employeeCount tr:nth-child('+ (x+1) +') td:first').text(response.empcount[x]);
+          $('.totalcount').text(response.total);
         }
-    ]
-};
+        sdata = {
+          labels : ["Jan","Feb","Mar","Apr","May","Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+          datasets : [
+            {
+              label: "First dataset",
+              fillColor : "rgba(128, 222, 234, 0.6)",
+              strokeColor : "#ffffff",
+              pointColor : "#00bcd4",
+              pointStrokeColor : "#ffffff",
+              pointHighlightFill : "#ffffff",
+              pointHighlightStroke : "#ffffff",
+              data:  arraydata
+            }
+          ]
+        };
+        clineChart();
+      }
+    });
+  });
 
-var nReloads1 = 0;
-var min1 = 1;
-var max1 = 10;
-var l1 =0;
-var trendingBarChart;
-function updateBarChart() {	
-	if (typeof trendingBarChart != "undefined") {
-	  	nReloads1++; 	
-		var x = Math.floor(Math.random() * (max1 - min1 + 1)) + min1;
-		trendingBarChart.addData([x], dataBarChart.labels[l1]);
-		trendingBarChart.removeData();
-		l1++;
-		if( l1 == dataBarChart.labels.length){ l1 = 0;} 
-	}
-}
-setInterval(updateBarChart, 5000);
+ 
+
 
 /*
 Trending Bar Chart
@@ -129,28 +116,10 @@ var radarChartData = {
 		}
 	],
 };
-	
 
-var nReloads2 = 0;
-var min2 = 1;
-var max2 = 10;
-var l2 =0;
-var trendingRadarChart;
-function trendingRadarChartupdate() {	
-	if (typeof trendingRadarChart != "undefined") {
-		nReloads2++;
-		var x = Math.floor(Math.random() * (max2 - min2 + 1)) + min2;	
-		trendingRadarChart.addData([x], radarChartData.labels[l2]);
-		var y = trendingRadarChart.removeData();
-		l2++;
-		if( l2 == radarChartData.labels.length){ l2 = 0;}
-	}
-}
-setInterval(trendingRadarChartupdate, 5000);
-
-window.onload = function(){
+function clineChart(){
 	var trendingLineChart = document.getElementById("trending-line-chart").getContext("2d");
-	window.trendingLineChart = new Chart(trendingLineChart).Line(data, {		
+	window.trendingLineChart = new Chart(trendingLineChart).Line(sdata, {		
 		scaleShowGridLines : true,///Boolean - Whether grid lines are shown across the chart		
 		scaleGridLineColor : "rgba(255,255,255,0.4)",//String - Colour of the grid lines		
 		scaleGridLineWidth : 1,//Number - Width of the grid lines		
@@ -187,7 +156,9 @@ window.onload = function(){
 		tooltipXOffset: 10,// Number - Pixel offset from point x to tooltip edge
 		responsive: true
 		});
+};
 
+function cdoughnut(){
 		var doughnutChart = document.getElementById("doughnut-chart").getContext("2d");
 		window.myDoughnut = new Chart(doughnutChart).Doughnut(doughnutData, {
 			segmentStrokeColor : "#fff",
@@ -199,49 +170,15 @@ window.onload = function(){
 			percentageInnerCutout : 60,
 			responsive : true
 		});
-
-		var trendingBarChart = document.getElementById("trending-bar-chart").getContext("2d");
-		window.trendingBarChart = new Chart(trendingBarChart).Bar(dataBarChart,{
-			scaleShowGridLines : false,///Boolean - Whether grid lines are shown across the chart
-			showScale: true,
-			animationSteps:15,
-			tooltipTitleFontFamily: "'Roboto','Helvetica Neue', 'Helvetica', 'Arial', sans-serif",// String - Tooltip title font declaration for the scale label		
-			responsive : true
-		});
-
-		window.trendingRadarChart = new Chart(document.getElementById("trending-radar-chart").getContext("2d")).Radar(radarChartData, {
-		    
-		    angleLineColor : "rgba(255,255,255,0.5)",//String - Colour of the angle line		    
-		    pointLabelFontFamily : "'Roboto','Helvetica Neue', 'Helvetica', 'Arial', sans-serif",// String - Tooltip title font declaration for the scale label	
-		    pointLabelFontColor : "#fff",//String - Point label font colour
-		    pointDotRadius : 4,
-		    animationSteps:15,
-		    pointDotStrokeWidth : 2,
-		    pointLabelFontSize : 12,
-			responsive: true
-		});
-
-		// var pieChartArea = document.getElementById("pie-chart-area").getContext("2d");
-		// window.pieChartArea = new Chart(pieChartArea).Pie(pieData,{
-		// 	responsive: true		
-		// });
-
-  var lineChart = document.getElementById("line-chart").getContext("2d");
-		window.lineChart = new Chart(lineChart).Line(lineChartData, {
-			scaleShowGridLines : false,
-			bezierCurve : false,
-			scaleFontSize: 12,
-			scaleFontStyle: "normal",
-			scaleFontColor: "#fff",
-			responsive: true,			
-		});
-
-		
-		if (typeof getContext != "undefined") {
-			var polarChartCountry = document.getElementById("polar-chart-country").getContext("2d");
-			window.polarChartCountry = new Chart(polarChartCountry).PolarArea(polarData, {
-				segmentStrokeWidth : 1,			
-				responsive:true
-			});
-		}
-};
+}
+//
+//		window.trendingRadarChart = new Chart(document.getElementById("trending-radar-chart").getContext("2d")).Radar(radarChartData, {
+//		    angleLineColor : "rgba(255,255,255,0.5)",//String - Colour of the angle line		    
+//		    pointLabelFontFamily : "'Roboto','Helvetica Neue', 'Helvetica', 'Arial', sans-serif",// String - Tooltip title font declaration for the scale label
+//		    pointLabelFontColor : "#fff",//String - Point label font colour
+//		    pointDotRadius : 4,
+//		    animationSteps:15,
+//		    pointDotStrokeWidth : 2,
+//		    pointLabelFontSize : 12,
+//			responsive: true
+//		});

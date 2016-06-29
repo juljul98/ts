@@ -208,10 +208,8 @@
 
       <!-- jQuery Library -->
       <script type="text/javascript" src="js/plugins.min.js"></script>
-
       <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
       <script type="text/javascript" src="js/plugins/moment/moment.js"></script>
       <script type="text/javascript" src="js/adminscript.js"></script>
-      
       </body>
     </html>

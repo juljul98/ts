@@ -67,7 +67,7 @@
                       <div>
                         <span class="chart-title white-text">Hired Employees</span>
                         <div class="chart-revenue cyan darken-2">
-                          <select name="yearHE" id="yearHE" value="{{ $thisyear }}">
+                          <select name="yearHE" id="yearHE" value="{{ $thisyear }}" style="color: #fff;">
                             <?php
                             for ($x=2015; $x<2030; $x++) {
                               if ($x == $thisyear) {
@@ -76,17 +76,11 @@
                               else {
                                 $year = "";
                               }
-                              echo '<option value="'.$x.'" '.$year.'>'.$x.'</option>';
+                              echo '<option value="'.$x.'" '.$year.' style="color: #000;">'.$x.'</option>';
                             }
                             ?>
                           </select>
-                        </div>
-                        <div class="switch chart-revenue-switch right">
-                          <label class="cyan-text text-lighten-5">
-                            Month
-                            <input type="checkbox">
-                            <span class="lever"></span> Year
-                          </label>
+                          <label for="yearHE" class="white-text">Year</label>
                         </div>
                       </div>
                       <div class="trending-line-chart-wrapper">
@@ -164,15 +158,15 @@
                     <div id="doughnut-chart-wrapper">
                       <canvas style="width: 185px; height: 123px;" width="185" id="doughnut-chart" height="123"></canvas>
                       <div class="doughnut-chart-status">
-                        <p class="ultra-small center-align">Total <span>18</span></p>
+                        <p class="ultra-small center-align">Total <strong><span class="totalEmp"></span></strong></p>
                       </div>
                     </div>
                   </div>
                   <div class="col s12 m2 l5">
                     <ul class="doughnut-chart-legend">
                       <li><strong>Legend</strong></li>
-                      <li class="mobile ultra-small"><span class="legend-color"></span>Registered Employee</li>
-                      <li class="kitchen ultra-small"><span class="legend-color"></span> Pending Employee</li>
+                      <li class="registered ultra-small"><span class="legend-color"></span>Registered Employee</li>
+                      <li class="pending ultra-small"><span class="legend-color"></span> Pending Employee</li>
                     </ul>
                   </div>
                 </div>
