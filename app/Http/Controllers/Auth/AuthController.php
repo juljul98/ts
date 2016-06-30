@@ -13,6 +13,8 @@ use Form;
 use Auth;
 use Response;
 use Cookie;
+use DB;
+use Crypt;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -132,11 +134,18 @@ class AuthController extends Controller
         );
       }
       else {
+        $resultid = DB::table('users')->select('id')->orderBy('id', 'desc')->take(1)->get();
+        foreach($resultid as $id) {
+          $result = $id->id;
+        }
+        $myId = $result + 1;
         $imgsrc = 'uploads/avatar.jpg';
-        $user = new User;
         $empno = Input::get('empno');
-        $user->avatar = $imgsrc;
+        
+        $user = new User;
+        $user->keyenc = Crypt::encrypt($myId);
         $user->empno = $empno;
+        $user->avatar = $imgsrc;
         $user->username = Input::get('username');
         $user->fullname = Input::get('fullname');
         $user->email = Input::get('email');
@@ -149,6 +158,13 @@ class AuthController extends Controller
         $user->save();
         return response('Register');
       }
+    }
+  
+    public function getPosition() {
+      $dept = DB::table('department')
+        ->select('name')
+        ->get();
+      return $dept;
     }
 
 }

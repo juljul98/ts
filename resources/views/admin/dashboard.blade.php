@@ -3,8 +3,6 @@
 <script>
   $('.sideNav li:nth-child(1)').addClass('active').siblings().removeClass('active');
 </script>
-
-
     <section id="content">
         <div class="container">
           <div id="card-stats">
@@ -101,51 +99,51 @@
                         </tr>
                       </thead>
                       <tbody class="employeeCount">
-                        <tr>
+                        <tr class="showEmp">
                           <td></td>
                           <td>January</td>
                         </tr>
-                        <tr>
+                        <tr class="showEmp">
                           <td></td>
                           <td>February</td>
                         </tr>
-                        <tr>
+                        <tr class="showEmp">
                           <td></td>
                           <td>March</td>
                         </tr>
-                        <tr>
+                        <tr class="showEmp">
                           <td></td>
                           <td>April</td>
                         </tr>
-                        <tr>
+                        <tr class="showEmp">
                           <td></td>
                           <td>May</td>
                         </tr>
-                        <tr>
+                        <tr class="showEmp">
                           <td></td>
                           <td>June</td>
                         </tr>
-                        <tr>
+                        <tr class="showEmp">
                           <td></td>
                           <td>July</td>
                         </tr>
-                        <tr>
+                        <tr class="showEmp">
                           <td></td>
                           <td>August</td>
                         </tr>
-                        <tr>
+                        <tr class="showEmp">
                           <td></td>
                           <td>September</td>
                         </tr>
-                        <tr>
+                        <tr class="showEmp">
                           <td></td>
                           <td>October</td>
                         </tr>
-                        <tr>
+                        <tr class="showEmp">
                           <td></td>
                           <td>November</td>
                         </tr>
-                        <tr>
+                        <tr class="showEmp">
                           <td></td>
                           <td>December</td>
                         </tr>
@@ -153,7 +151,7 @@
                     </table>
                   </div>
                 </div>
-                <div class="card donught-wrap">
+                <div class="card col l7">
                   <div class="col s12 m3 l7">
                     <div id="doughnut-chart-wrapper">
                       <canvas style="width: 185px; height: 123px;" width="185" id="doughnut-chart" height="123"></canvas>

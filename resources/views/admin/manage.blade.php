@@ -39,7 +39,7 @@
           <th>Position</th>
           <th>Department</th>
           <th>Active</th>
-          <th>Reset</th>
+          <th>Reset Password</th>
         </tr>
       </thead>
        <tbody class="loadRecord" data-next-page="{{ $employees->nextPageUrl() }}">
@@ -51,7 +51,7 @@
            <td>{{ $list->department }}</td>
            <td>
              <div class="switch">
-               <label data-id="{{ $list->id }}">
+               <label data-id="{{ $list->keyenc }}">
                  Off
                  <input type="checkbox" class="chckBx" {{ ( $list->active == 1) ? 'checked' : '' }}>
                  <span class="lever"></span>
@@ -60,7 +60,7 @@
              </div>
            </td>
            <td>
-             <div class="reset" data-idr="{{ $list->id }}"><a href="#"><i class="material-icons">vpn_key</i></a></div>
+             <div class="reset" data-idr="{{ $list->keyenc }}"><a href="#"><i class="material-icons">vpn_key</i></a></div>
            </td>
          </tr>
             

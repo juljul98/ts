@@ -11,7 +11,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-  
+
     public function role() {
       return $this->hasOne('App\Role', 'id', 'userlevel');
     }
@@ -43,8 +43,9 @@ class User extends Authenticatable
     }
   
     protected $fillable = [
-        'avatar', 'username', 'email', 'password', 'phone', 'address', 'gender', 'department'
+        'keyenc','avatar', 'username', 'email', 'password', 'phone', 'address', 'gender', 'department'
     ];
+
 
     /**
      * The attributes that should be hidden for arrays.

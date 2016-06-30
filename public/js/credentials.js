@@ -1,7 +1,5 @@
 $(document).ready(function(){
 //  $('select').material_select();
-
-
   $('.frmLogin').submit(function(e){
     e.preventDefault();
     var username = $('.username').val(),
@@ -30,7 +28,6 @@ $(document).ready(function(){
   });
   $('.frmRegistration').submit(function(e){
     e.preventDefault();
-
         $('.error').text('');
         var empno = $('.empno').val(),
             username = $('.username').val(),
@@ -80,6 +77,9 @@ $(document).ready(function(){
             }
           }
         });
+  });
+  $('.department').change(function() {
+    alert('active');
   });
   
   

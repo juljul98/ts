@@ -12,7 +12,7 @@ use DB;
 use Role;
 use Response;
 use Validator;
-
+use Crypt;
 
 class DepartmentController extends Controller
 {
@@ -56,13 +56,20 @@ class DepartmentController extends Controller
         return response ($validation->messages());
       }
       else {
+        $resultid = DB::table('users')->select('id')->orderBy('id', 'desc')->take(1)->get();
+        foreach($resultid as $id) {
+          $result = $id->id;
+        }
+        $myId = $result + 1;
         $departmentname = htmlspecialchars($request->input('departmentname'));
         $department = new Department;
+        $department->keyenc = Crypt::encrypt($myId);
         $department->departmentname = ucwords($departmentname);
         $department->save();
         return response('Successfully Save');
       }
     }
+  
     public function savePosition(Request $request) {
       $file = array(
         'departmentname' => $request->input('departmentname'),

@@ -110,11 +110,10 @@
           <ul class="collapsible collapsible-accordion sideNav">
             @if (Auth::user()->userlevel == 1)
             <li class="bold"><a href="{{ url('/admin') }}" class="waves-effect waves-cyan"><i class="material-icons">dashboard</i> Dashboard</a></li>
-            <li class="bold"><a href="{{ url('/manageaccount') }}" class="waves-effect waves-cyan"><i class="material-icons">account_circle</i> Manage Account</a>
+            <li class="bold"><a href="{{ url('/manageaccounts') }}" class="waves-effect waves-cyan"><i class="material-icons">account_circle</i> Manage Account</a>
             @endif
-            @if (Auth::user()->userlevel == 3)
-            <li class="bold"><a href="{{ url('/home') }}" class="waves-effect waves-cyan"><i class="material-icons">dashboard</i> Home</a></li>
-            @endif
+            <li class="bold"><a href="{{ url('/manageleaves') }}" class="waves-effect waves-cyan"><i class="material-icons">line_weight</i> Manage Leaves</a></li>
+            <li class="bold"><a href="{{ url('/overtimes') }}" class="waves-effect waves-cyan"><i class="material-icons">query_builder</i> Overtimes</a></li>
             <li class="bold"><a href="{{ url('/calendar') }}" class="waves-effect waves-cyan"><i class="material-icons">perm_contact_calendar</i> Calendar</a>
             </li>
             <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="material-icons">settings</i> Settings</a>

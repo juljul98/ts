@@ -65,7 +65,7 @@ $(document).ready(function(){
                         html += '<td>' + dataEmp[x].department + '</td>';
                         html += '<td>';
                         html += '<div class="switch">';
-                        html += '<label data-id="' + dataEmp[x].id + '">';
+                        html += '<label data-id="' + dataEmp[x].keyenc + '">';
                         html += 'Off';
                         html += '<input type="checkbox" class="chckBx"';
                         html += (dataEmp[x].active == 1 ) ? 'checked' : '';
@@ -76,7 +76,7 @@ $(document).ready(function(){
                         html += '</div>';
                         html += '</td>';
                         html += '<td>';
-                        html += '<div class="reset" data-idr="' + dataEmp[x].id + '"><a href="#"><i class="material-icons">vpn_key</i></a></div>';
+                        html += '<div class="reset" data-idr="' + dataEmp[x].keyenc + '"><a href="#"><i class="material-icons">vpn_key</i></a></div>';
                         html += '</td>';
                         html += '</tr>';
                       }
@@ -126,7 +126,7 @@ $(document).ready(function(){
           html += '<td>' + dataEmp[x].department + '</td>';
           html += '<td>';
           html += '<div class="switch">';
-          html += '<label data-id="' + dataEmp[x].id + '">';
+          html += '<label data-id="' + dataEmp[x].keyenc + '">';
           html += 'Off';
           html += '<input type="checkbox" class="chckBx"';
           html += (dataEmp[x].active == 1 ) ? 'checked' : '';
@@ -137,7 +137,7 @@ $(document).ready(function(){
           html += '</div>';
           html += '</td>';
           html += '<td>';
-          html += '<div class="reset" data-idr="' + dataEmp[x].id + '"><a href="#"><i class="material-icons">vpn_key</i></a></div>';
+          html += '<div class="reset" data-idr="' + dataEmp[x].keyenc + '"><a href="#"><i class="material-icons">vpn_key</i></a></div>';
           html += '</td>';
           html += '</tr>';
         }

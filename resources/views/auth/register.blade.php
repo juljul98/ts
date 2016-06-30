@@ -4,9 +4,8 @@
   <div class="row">
 
     <div class="col l6 s10 offset-l3 offset-s1 collection with-header"  id="task-card">
-        {!! Form::open (array('url' => '/register/savaData', 'method' => 'POST', 'class' => 'form-horizontal frmRegistration', 'role' => 'form')) !!}
-        <!--                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">-->
-        {!! csrf_field() !!}
+      <form class="form-horizontal frmRegistration" role="form" method="POST" action="{{ url('/register/savaData') }}">
+        {{ csrf_field() }}
       <div class="collection-header teal">
         <h5 class="task-card-title fntWhite center">Registration</h5>
       </div>
@@ -41,14 +40,14 @@
            </div>
            <div class="row">
              <div class="input-field col l8 s10 offset-l2 offset-s1">
-               {!! Form::password('password', array('class' => 'validate password')) !!}
+              <input type="password" name="password" id="password" class="validate password">
                <label for="password">Password</label>
                <p class="error passwordError"></p>
              </div>
            </div>
            <div class="row">
              <div class="input-field col l8 s10 offset-l2 offset-s1">
-               {!! Form::password('password_confirmation', array('class' => 'validate password_confirmation' )) !!}
+              <input type="password" name="password_confirmation" id="password_confirmation" class="validate password_confirmation">
                <label for="password_confirmation">Confirm Password</label>
                <p class="error passConfirmError"></p>
              </div>
@@ -56,21 +55,37 @@
 
            <div class="row">
              <div class="input-field col l8 s10 offset-l2 offset-s1">
-               {!! Form::select('gender', array('default' => null, 'Male' => 'Male', 'Female' => 'Female'), null, array('class' => 'gender'))!!}
+              <select name="gender" id="gender">
+                <option value=""></option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
                 <label class="drpDown" for="gender">Gender</label>
                <p class="error genderError"></p>
              </div>
            </div>
            <div class="row">
              <div class="input-field col l8 s10 offset-l2 offset-s1">
-               {!! Form::select('department', array('default' => null, 'Web Integration' => 'Web Integration', 'E-Commerce' => 'E-Commerce', 'Callcenter' => 'Callcenter', 'HR' => 'HR'), null, array('class' => 'department'))!!}
+              <select name="department" id="department" class="department">
+                <option value=""></option>
+                @foreach($department as $list)
+                <option value="{{ $list->departmentname }}" data-key="{{ $list->keyenc }}">{{ $list->departmentname }}</option>
+                @endforeach
+               </select>
                <label class="drpDown" for="department">Department</label>
                <p class="error departmentError"></p>
              </div>
            </div>
            <div class="row">
              <div class="input-field col l8 s10 offset-l2 offset-s1">
-               {!! Form::select('position', array('default' => null, '2' => 'Manager', '2' => 'Team Lead', '3' => 'Associate', '1' => 'HR', '4' => 'Guard'), null, array('class' => 'position') )!!}
+              <select name="position" class="position" id="position">
+                <option value=""></option>
+                <option value="2">Manager</option>
+                <option value="2">Team Lead</option>
+                <option value="3">Associate</option>
+                <option value="1">HR</option>
+                <option value="3">Guard</option>
+              </select>
                <label class="drpDown" for="position">Position</label>
                <p class="error positionError"></p>
              </div>
@@ -87,8 +102,6 @@
            </div>
          </div>
         {{ Form::close() }}
-
-
     </div>
   </div>
   <div id="card-alert" class="card green approval">

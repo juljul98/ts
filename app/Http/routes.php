@@ -21,6 +21,12 @@ Route::controllers([
 Route::any('/auth', 'Auth\AuthController@authenticate');
 Route::post('/saveData', 'Auth\AuthController@registration');
 Route::get('/', 'Auth\AuthController@index');
+Route::post('/register', function (){
+  $dept = DB::table('department')
+    ->select('name')
+    ->get();
+  return $dept;
+});
 
 //Admin Route Level 1
 Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'Administrator'], function(){
@@ -32,9 +38,9 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'Administrator'], fu
   Route::get('/admin/getCountForChart', 'DashController@getCountForChart');
   
   // Manage Account
-  Route::get('/manageaccount', 'ManageController@index');
-  Route::post('/manageaccount/getRecord', 'ManageController@getRecord');
-  Route::post('/manageaccount/updateActive/{id}', 'ManageController@updateActive');
+  Route::get('/manageaccounts', 'AccountsController@index');
+  Route::post('/manageaccount/getRecord', 'AccountsController@getRecord');
+  Route::post('/manageaccount/updateActive/{id}', 'AccountsController@updateActive');
   // Calendar
   Route::get('/department', 'DepartmentController@index');
   Route::get('/department/getRole', 'DepartmentController@getRole');
