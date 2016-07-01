@@ -8,7 +8,6 @@ $(document).ready(function(){
       setInActive(userID);
     }
   });
-  
     function setActive(userID) {
       var active = 1;
       $.ajax({
@@ -18,7 +17,6 @@ $(document).ready(function(){
       });
     }
     function setInActive(userID) {
-    
       var inactive = 0;
       $.ajax({
         type  : 'post',
@@ -26,7 +24,6 @@ $(document).ready(function(){
         data  : { "checked": inactive }
       });
     }
-    
     // Pagination
     $('.countpager:first').addClass('active disabled');
   

@@ -1,5 +1,6 @@
 $(document).ready(function(){
 //  $('select').material_select();
+  $('.loginError').hide();
   $('.frmLogin').submit(function(e){
     e.preventDefault();
     var username = $('.username').val(),
@@ -15,12 +16,12 @@ $(document).ready(function(){
           window.location.href = window.location.href = '/home';
         }
         else {
-          $('.loginError').fadeIn();
+          $('.loginError').fadeIn().find('p').text('Incorrect Username or Password');
           $('.frmLogin').parent().addClass('shake animated');
           setTimeout(function(){
             $('.frmLogin').parent().removeClass('shake animated');
           }, 500);
-          $(this).siblings.val('');
+          $(this).siblings().val('');
 
         }
       }
@@ -57,7 +58,7 @@ $(document).ready(function(){
           success : function(response) {
             if (response == 'Register') {
               $("html, body").animate({ scrollTop: $(document).height() }, 10);
-              $('.approval').fadeIn();
+              $('.approval').fadeIn().text('Wait for the Approval of the Admin of this Site');
               setInterval(function(){
                 window.location.href = window.location.href = '/login';
               }, 1500);

@@ -16,6 +16,7 @@ use Cookie;
 use DB;
 use Crypt;
 use Illuminate\Http\Request;
+use Redirect;
 
 class AuthController extends Controller
 {
@@ -52,7 +53,7 @@ class AuthController extends Controller
         return view('auth.login');
     }
   
-    public function authenticate() {
+    public function authenticate(Request $request) {
       $credentials_username_ad = array(
         'username' => Input::get('username'),
         'password' => Input::get('password'),
@@ -79,19 +80,45 @@ class AuthController extends Controller
       // USER LEVEL 1
       if (Auth::attempt( $credentials_username_ad , true)) {
         $this->cookies();
-        return response('1');
+        
+        if($request->ajax()){
+          return response('1');
+        } else {
+          return Redirect::to('/admin');
+        }
       } elseif (Auth::attempt( $credentials_email_ad , true)) {
         $this->cookies();
-        return response('1');
+        
+        if($request->ajax()){
+          return response('1');
+        } else {
+          return Redirect::to('/admin');
+        }
+        
       } elseif (Auth::attempt( $credentials_username_as , true)) {
         $this->cookies();
-        return response('3');
+        
+        if($request->ajax()){
+          return response('3');
+        } else {
+          return Redirect::to('/home');
+        }
+        
       } elseif (Auth::attempt( $credentials_email_as , true)) {
         $this->cookies();
-        return response('3');
+        
+        if($request->ajax()){
+          return response('3');
+        } else {
+          return Redirect::to('/home');
+        }
+        
       }
       else {
-        return response('invalid');
+        if($request->ajax()){
+          return response('invalid');
+        }
+        return Redirect::to('/login')->with('message', 'Incorrect Username or Password');
       }
     }
   
@@ -100,7 +127,7 @@ class AuthController extends Controller
       Cookie::queue($ckname, Cookie::get($ckname), 99200);
     }
   
-    public function registration () {
+    public function registration (Request $request) {
 
       $files = array(
         'empno'      => Input::get('empno'),
@@ -129,9 +156,12 @@ class AuthController extends Controller
       $validator = Validator::make($files, $rules);
       if ( $validator->fails())
       {
-        return Response::json(
-          $validator->messages()
-        );
+        if($request->ajax()){
+          return Response::json(
+            $validator->messages()
+          );
+        }
+        return Redirect::to('/register')->withInput()->withErrors($validator);
       }
       else {
         $resultid = DB::table('users')->select('id')->orderBy('id', 'desc')->take(1)->get();
@@ -154,9 +184,13 @@ class AuthController extends Controller
         $user->department = Input::get('department');
         $user->position = Input::get('position');
         $user->userlevel = Input::get('userlevel');
+        $user->userlevel = Input::get('position');
         $user->active = 0;
         $user->save();
-        return response('Register');
+        if($request->ajax()){
+          return response('Register');
+        }
+        return Redirect::to('/register')->with('message', 'Wait for the Approval of the Admin of this Site');
       }
     }
   

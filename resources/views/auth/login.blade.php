@@ -14,7 +14,7 @@
       <div class="collection-header teal">
         <h5 class="task-card-title fntWhite center">Login</h5>
       </div>
-      <form class="form-horizontal frmLogin" role="form" method="POST" action="{{ url('/login/auth') }}">
+      <form class="form-horizontal frmLogin" role="form" method="POST" action="{{ url('/auth') }}">
         {!! csrf_field() !!}
         <div class="row">
           <div class="input-field col l10 s10 offset-l1 offset-s1">
@@ -53,17 +53,26 @@
         </div>
       </div>
       <!-- / Login end -->
-
-      
     </div>
+    @if (session('message'))
     <div id="card-alert" class="card red loginError">
       <div class="card-content white-text">
-        <p><i class="mdi-alert-error"></i> Incorrect Username or Password</p>
+        <p><i class="mdi-alert-error"></i> {{ session('message') }} </p>
       </div>
       <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">×</span>
       </button>
     </div>
+    @endif
+    <div id="card-alert" class="card red loginError">
+      <div class="card-content white-text">
+        <p><i class="mdi-alert-error"></i></p>
+      </div>
+      <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    
   </div>
 </div>
 @endsection
