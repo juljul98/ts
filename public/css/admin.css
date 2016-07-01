@@ -8,8 +8,11 @@ body {
     opacity: 1 !important; }
   body #modal1 {
     max-height: 511.688px !important; }
-  body .showEmp:hover {
-    cursor: pointer; }
+  body tr.showEmp:hover {
+    cursor: pointer;
+    background-color: #000; }
+  body td {
+    border-radius: 0px !important; }
 
 .donught-wrap {
   width: 65%; }

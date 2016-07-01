@@ -64,14 +64,15 @@
       </button>
     </div>
     @endif
-    <div id="card-alert" class="card red loginError">
+    <div id="card-alert" class="card red loginError" style="display:none;">
       <div class="card-content white-text">
-        <p><i class="mdi-alert-error"></i></p>
+        <p><i class="mdi-alert-error"></i> {{ session('message') }} </p>
       </div>
       <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">×</span>
       </button>
     </div>
+
     
   </div>
 </div>

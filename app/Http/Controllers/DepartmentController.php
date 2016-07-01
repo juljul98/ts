@@ -38,7 +38,7 @@ class DepartmentController extends Controller
   
     function getDepartment() {
       $department = DB::table('department')
-        ->select('id','departmentname')
+        ->select('id','keyenc','departmentname')
         ->get();
       return $department;
     }
@@ -56,7 +56,7 @@ class DepartmentController extends Controller
         return response ($validation->messages());
       }
       else {
-        $resultid = DB::table('users')->select('id')->orderBy('id', 'desc')->take(1)->get();
+        $resultid = DB::table('department')->select('id')->orderBy('id', 'desc')->take(1)->get();
         foreach($resultid as $id) {
           $result = $id->id;
         }
@@ -86,7 +86,7 @@ class DepartmentController extends Controller
         return response ($validation->messages());
       } else {
         $position = new Position;
-        $position->departmentid = $request->input('departmentname');
+        $position->departmentid = Crypt::decrypt($request->input('departmentname'));
         $position->userlevel = $request->input('userlevel');
         $position->positionname = htmlspecialchars($request->input('positionname'));
         $position->save();
@@ -98,11 +98,9 @@ class DepartmentController extends Controller
       $department = $this->getDepartment();
       return $department;
     }
-    
     public function getAllRecord() {
-        $records = DB::table('department')
-            ->join('position', 'department.id', '=', 'position.departmentid')
-            ->select()
+        $records = DB::table('position')
+            ->select('id', 'departmentid', 'userlevel', 'positionname')
             ->get();
         return $records;
     }

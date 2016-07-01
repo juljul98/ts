@@ -85,7 +85,7 @@ $(document).ready(function(){
       success: function(data) {
         var loop = data.length;
         for(x = 0; x<loop; x++) {
-          html += '<option value="'+ data[x].id +'">'+ data[x].departmentname +'</option>';
+          html += '<option value="'+ data[x].keyenc +'">'+ data[x].departmentname +'</option>';
         }
         $('.departmentnameforposition').html(html);
       }

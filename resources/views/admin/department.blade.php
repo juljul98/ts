@@ -57,7 +57,7 @@
               <select name="departmentname" id="departmentname" class="departmentnameforposition">
                
                 @foreach($department as $list)
-                <option value="{{ $list->id }}">{{ $list->departmentname }}</option>
+                <option value="{{ $list->keyenc }}">{{ $list->departmentname }}</option>
                 @endforeach
               
               </select>
@@ -94,20 +94,15 @@
               <button class="btn cyan waves-effect waves-light" type="submit" name="action"><i class="material-icons">add_circle_outline</i><span class="addLbl">&nbsp;Add</span></button>
             </div>
             <div class="col l12">
-                <div id="card-alert" class="card green lighten-2 positionAlertSuccess" style="display: none;">
-                  <div class="card-content white-text">
+                <div class="positionAlertSuccess" style="display: none;">
                     <p>SUCCESS : The page has been added.</p>
-                  </div>
-                  <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                  </button>
                 </div>
             </div>
           </div>
         </form>
       </div>
     </div>
-<!--    Right-->
+    <!--    Right-->
    <div class="col l6">
      <ul class="collapsible popout" data-collapsible="accordion">
        @foreach($department as $list)
@@ -116,8 +111,8 @@
           <div class="collapsible-body">
             <ul>
               @foreach($records as $record)
-                @if($list->id == $record->departmentid)
-                <li>{{ $record->positionname }}</li>
+                @if(Crypt::decrypt($list->keyenc) == $record->departmentid)
+                  <li>{{ $record->positionname }}</li>
                 @endif
               @endforeach
             </ul>

@@ -194,11 +194,18 @@ class AuthController extends Controller
       }
     }
   
-    public function getPosition() {
-      $dept = DB::table('department')
-        ->select('name')
+    public function getPosition(Request $request) {
+      $decode = $request->input('departmentid');
+      $departmentid = Crypt::decrypt($decode);
+      $position = DB::table('position')
+        ->select('positionname', 'userlevel')
+        ->where('departmentid', '=', $departmentid)
         ->get();
-      return $dept;
+      return [
+        'position' => $position
+      ];
     }
+    
+    
 
 }

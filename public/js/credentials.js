@@ -80,9 +80,22 @@ $(document).ready(function(){
         });
   });
   $('.department').change(function() {
-    alert('active');
+    var departmentid = $(this).find(':selected').data('key');
+    var html = '';
+    $.ajax({
+      type: 'get',
+      url: base_url + 'getPosition',
+      data: {"departmentid": departmentid},
+      success: function(data) {
+          var dataPos = data.position;
+          var loop = dataPos.length;
+          for(x=0; x<loop; x++) {
+            html += '<option value=""></option>';
+            html += '<option value="' + dataPos[x].userlevel + '">' + dataPos[x].positionname + '</option>';
+          }
+        console.log(html);
+        $('#position').html(html);
+      }
+    });
   });
-  
-  
-  
 });

@@ -20,7 +20,8 @@ body {
     opacity: 1!important;
   }
   #modal1 { max-height: 511.688px!important; }
-  .showEmp:hover { cursor: pointer; }
+  tr.showEmp:hover { cursor: pointer; background-color: #000 }
+  td { border-radius: 0px!important; }
 }
 .donught-wrap {
   width: 65%;

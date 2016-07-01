@@ -121,7 +121,7 @@
               <select name="department" id="department" class="department">
                 <option value=""></option>
                   @foreach($department as $list)
-                    <option> value="{{ $list->departmentname }}" data-key="{{ $list->keyenc }}">{{ $list->departmentname }}</option>
+                    <option value="{{ $list->departmentname }}" data-key="{{ $list->keyenc }}">{{ $list->departmentname }}</option>
                   @endforeach
                </select>
                <label class="drpDown" for="department">Department</label>
@@ -140,11 +140,7 @@
              <div class="input-field col l8 s10 offset-l2 offset-s1">
               <select name="position" class="position" id="position">
                 <option value=""></option>
-                <option value="2">Manager</option>
-                <option value="2">Team Lead</option>
-                <option value="3">Associate</option>
-                <option value="1">HR</option>
-                <option value="3">Guard</option>
+                
               </select>
               <label class="drpDown" for="position">Position</label>
                

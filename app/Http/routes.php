@@ -21,12 +21,7 @@ Route::controllers([
 Route::any('/auth', 'Auth\AuthController@authenticate');
 Route::post('/saveData', 'Auth\AuthController@registration');
 Route::get('/', 'Auth\AuthController@index');
-Route::post('/register', function (){
-  $dept = DB::table('department')
-    ->select('name')
-    ->get();
-  return $dept;
-});
+Route::get('/getPosition', 'Auth\AuthController@getPosition');
 
 //Admin Route Level 1
 Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'Administrator'], function(){
