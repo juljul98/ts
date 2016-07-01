@@ -12,18 +12,24 @@ $(document).ready(function(){
   $('.showEmp').click(function(e) {
     e.preventDefault();
     var trigger = $(this).attr('id');
+
     if ( trigger == 'regEmployee') {
         var method = 'getRegisteredEmployee';
         $('.modal-title').text('Registered Employee/s');
     } else if (trigger == 'pendEmployee') {
         var method = 'getPendingEmployee';
         $('.modal-title').text('Pending Employee/s');
-      }
+    } else if (trigger == 'showRecord') {
+        var method = 'getRecordByMonth';
+        var month = $(this).find('.month').attr('value');
+        var year = $('#yearHE').val();
+    }
+
     $('.spinnerLoaderDash').show();
       $.ajax({
         type: 'get',
         url: base_url + 'admin/' + method,
-        data: {},
+        data: {"month": month, "year": year},
         success: function(data) {
               var url = data.next_page;
               var dataEmp = data.employees.data;

@@ -12,7 +12,7 @@ $(document).ready(function(){
       var active = 1;
       $.ajax({
         type  : 'post',
-        url   : base_url + 'manageaccount/updateActive/' + userID,
+        url   : base_url + 'manageaccounts/updateActive/' + userID,
         data  : { "checked": active }
       });
     }
@@ -20,7 +20,7 @@ $(document).ready(function(){
       var inactive = 0;
       $.ajax({
         type  : 'post',
-        url   : base_url + 'manageaccount/updateActive/' + userID,
+        url   : base_url + 'manageaccounts/updateActive/' + userID,
         data  : { "checked": inactive }
       });
     }
@@ -104,7 +104,7 @@ $(document).ready(function(){
     var searchFrm = $(this).val();
     $.ajax({
       type: 'get',
-      url: base_url + 'manageaccount',
+      url: base_url + 'manageaccounts',
       data: {
         'searchFrm': searchFrm
       },
@@ -150,7 +150,7 @@ $(document).ready(function(){
         pager += '</li>';
         for (x = 1; x <= count; x++) {
           pager += '<li class="countpager">';
-          pager += '<a href=" ' +  base_url + 'manageaccount?searchFrm=' + searchFrm + '&page=' + x + '">' + x +'</a>';
+          pager += '<a href=" ' +  base_url + 'manageaccounts?searchFrm=' + searchFrm + '&page=' + x + '">' + x +'</a>';
           pager += '</li>';
         }
         pager += '<li class="next">';

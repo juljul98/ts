@@ -63,7 +63,7 @@
                   <div class="card-move-up waves-effect waves-block waves-light">
                     <div class="move-up cyan darken-1">
                       <div>
-                        <span class="chart-title white-text">Hired Employees</span>
+                        <span class="chart-title white-text">Registered Employees</span>
                         <div class="chart-revenue cyan darken-2">
                           <select name="yearHE" id="yearHE" value="{{ $thisyear }}" style="color: #fff;">
                             <?php
@@ -99,53 +99,53 @@
                         </tr>
                       </thead>
                       <tbody class="employeeCount">
-                        <tr class="showEmp">
+                        <tr data-target="modal1" class="modal-trigger showEmp" id="showRecord">
                           <td></td>
-                          <td>January</td>
+                          <td class="month" value="1">January</td>
                         </tr>
-                        <tr class="showEmp">
+                        <tr data-target="modal1" class="modal-trigger showEmp" id="showRecord">
                           <td></td>
-                          <td>February</td>
+                          <td class="month" value="2">February</td>
                         </tr>
-                        <tr class="showEmp">
+                        <tr data-target="modal1" class="modal-trigger showEmp" id="showRecord">
                           <td></td>
-                          <td>March</td>
+                          <td class="month" value="3">March</td>
                         </tr>
-                        <tr class="showEmp">
+                        <tr data-target="modal1" class="modal-trigger showEmp" id="showRecord">
                           <td></td>
-                          <td>April</td>
+                          <td class="month" value="4">April</td>
                         </tr>
-                        <tr class="showEmp">
+                        <tr data-target="modal1" class="modal-trigger showEmp" id="showRecord">
                           <td></td>
-                          <td>May</td>
+                          <td class="month" value="5">May</td>
                         </tr>
-                        <tr class="showEmp">
+                        <tr data-target="modal1" class="modal-trigger showEmp" id="showRecord">
                           <td></td>
-                          <td>June</td>
+                          <td class="month" value="6">June</td>
                         </tr>
-                        <tr class="showEmp">
+                        <tr data-target="modal1" class="modal-trigger showEmp" id="showRecord">
                           <td></td>
-                          <td>July</td>
+                          <td class="month" value="7">July</td>
                         </tr>
-                        <tr class="showEmp">
+                        <tr data-target="modal1" class="modal-trigger showEmp" id="showRecord">
                           <td></td>
-                          <td>August</td>
+                          <td class="month" value="8">August</td>
                         </tr>
-                        <tr class="showEmp">
+                        <tr data-target="modal1" class="modal-trigger showEmp" id="showRecord">
                           <td></td>
-                          <td>September</td>
+                          <td class="month" value="9">September</td>
                         </tr>
-                        <tr class="showEmp">
+                        <tr data-target="modal1" class="modal-trigger showEmp" id="showRecord">
                           <td></td>
-                          <td>October</td>
+                          <td class="month" value="10">October</td>
                         </tr>
-                        <tr class="showEmp">
+                        <tr data-target="modal1" class="modal-trigger showEmp" id="showRecord">
                           <td></td>
-                          <td>November</td>
+                          <td class="month" value="11">November</td>
                         </tr>
-                        <tr class="showEmp">
+                        <tr data-target="modal1" class="modal-trigger showEmp" id="showRecord">
                           <td></td>
-                          <td>December</td>
+                          <td class="month" value="12">December</td>
                         </tr>
                       </tbody>
                     </table>
