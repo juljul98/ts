@@ -79,5 +79,22 @@ class DashController extends Controller
           ];
         }
     }
+
+    public function getRecordByMonth(Request $request) {
+      $month = $request->input('month');
+      $year = $request->input('year');
+      $employee = DB::table('users')
+          ->select('fullname', 'created_at')
+          ->whereMonth('created_at', '=', $month)
+          ->whereYear('created_at', '=', $year)
+          ->where('active', '=', 1)
+          ->paginate(10);
+          if($request->ajax()) {
+          return [
+            'employees' => $employee,
+            'next_page' => $employee->nextPageUrl()
+          ];
+        }
+    }
   
 }
