@@ -11,6 +11,8 @@ use Session;
 use Auth;
 use Carbon\Carbon;
 use Input;
+use App\User;
+use Crypt;
 
 class DashController extends Controller
 {
