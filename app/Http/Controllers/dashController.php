@@ -30,6 +30,7 @@ class DashController extends Controller
       $pendemployee = DB::table('users')->where('active', '=', 0)->count();
 
       return View::make('admin.dashboard', compact('title', 'reg', 'regemployee', 'pendemployee', 'thisyear'));
+      
     }
   
 
