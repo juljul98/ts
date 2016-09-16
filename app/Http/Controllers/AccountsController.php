@@ -50,7 +50,7 @@ class AccountsController extends Controller
           ];
         }
       }
-      return view('admin.manage', compact('title', 'employees'));
+      return view('admin.manageaccounts', compact('title', 'employees'));
     }
   
     public function updateActive (Request $request, $id) {

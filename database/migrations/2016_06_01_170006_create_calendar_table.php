@@ -19,6 +19,7 @@ class CreateCalendarTable extends Migration
       $table->string('description');
       $table->string('color');
       $table->string('start_date');
+      $table->string('data_type');
       $table->timestamps();
     });
   }

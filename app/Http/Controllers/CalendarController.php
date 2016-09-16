@@ -16,7 +16,8 @@ class CalendarController extends Controller
 {
     public function index() {
       $title = 'Calendar of Activities';
-      return view::make('admin.calendar', compact('title'));
+      $breadcrumbs = 'Calendar';
+      return view::make('admin.calendar', compact('title', 'breadcrumbs'));
     }
   
     public function saveCalendar() {
@@ -43,6 +44,8 @@ class CalendarController extends Controller
           $calendar->description = htmlspecialchars(Input::get('description'));
           $calendar->color = Input::get('color');
           $calendar->start_date = Input::get('start_date');
+          $calendar->data_type = Input::get('data_type');
+          $calendar->status = Input::get('data_status');
           $calendar->save();
           return response('Save');
         }

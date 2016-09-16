@@ -163,6 +163,7 @@ class AuthController extends Controller
         }
         return Redirect::to('/register')->withInput()->withErrors($validator);
       }
+      
       else {
         $resultid = DB::table('users')->select('id')->orderBy('id', 'desc')->take(1)->get();
         foreach($resultid as $id) {

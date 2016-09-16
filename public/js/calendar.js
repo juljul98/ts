@@ -67,11 +67,10 @@ $(document).ready(function() {
     if (z == '') {
       z = "#3a87ad";
     }
-    var event = '<div class=\"fc-event\" style=\"background-color:'  + z + '">' + x + '</div><span class=\"evntDesc\">' + y +'</span>';
+    var event = '<div data-type="normal" data-status="1" class=\"fc-event\" style=\"background-color:'  + z + '">' + x + '</div><span class=\"evntDesc\">' + y +'</span>';
     $('.list').prepend(event);
     ini_events($('.list').find('.fc-event'));
   });
-
 
   /* initialize the calendar
     -----------------------------------------------------------------*/
@@ -150,12 +149,21 @@ $(document).ready(function() {
           var loop = data.length;
           var events = [];
           for( x=0; x < loop; x++ ){
+            var new_title, new_description;
+            if(data[x].status == 0) {
+              new_title = '(Pending) ' + data[x].title;
+              new_description = 'Wait for the approval of the manager or team leader';
+            } else {
+              new_title = data[x].title;
+              new_description = 'Your leave is on ' + data[x].start_date;
+            }
             events.push({
-              title: data[x].title,
-              description: data[x].description,
+              title: new_title,
+              description: new_description,
               color: data[x].color,
               start: data[x].start_date,
-              id: data[x].id
+              id: data[x].id,
+              status: data[x].status
             });
           }
           callback(events);
@@ -164,28 +172,31 @@ $(document).ready(function() {
     },
 
     drop: function (start, end, allDay, delta, event) { // Save Data to database
-      var title = $(this).text();
-      var color = rgb2hex($(this).css('background-color'));
-      var start_date = start.format();
-      var description = $('.evntDesc').text();
-      $.ajax({
-        type: 'post',
-        url: base_url + 'calendar/saveData',
-        data: {
-          "title": title,
-          "description": description,
-          "color": color,
-          "start_date": start_date
-        },
-        success: function(response) {
-          if (response == 'Save') {
-            $('#calendar').fullCalendar('refetchEvents');
-            swal("Save the Date", title + " successfully saved", "success");
-          }
-        }
-        
-      });
-    },
+      var title = $(this).text(),
+          color = rgb2hex($(this).css('background-color')),
+          start_date = start.format(),
+          description = $('.evntDesc').text(),
+          data_type = $(this).data('type');
+          data_status = $(this).data('status');
+            $.ajax({
+              type: 'post',
+              url: base_url + 'calendar/saveData',
+              data: {
+                "title": title,
+                "description": description,
+                "color": color,
+                "start_date": start_date,
+                "data_type": data_type,
+                "data_status" : data_status
+              },
+              success: function(response) {
+                if (response == 'Save') {
+                  swal("Save the Date", title + " successfully saved", "success");
+                }
+              }
+              
+            });
+          },
     
     eventDrop: function(event, delta, revertFunc) {
       alert(event.title + " was dropped on " + event.start.format());

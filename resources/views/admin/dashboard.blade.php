@@ -3,6 +3,18 @@
 <script>
   $('.sideNav li:nth-child(1)').addClass('active').siblings().removeClass('active');
 </script>
+  <div id="breadcrumbs-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m12 l12">
+          <h5 class="breadcrumbs-title">Dashboard</h5>
+          <ol class="breadcrumbs">
+            <li><a href="{{ url('/admin')}}">Dashboard</a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
     <section id="content">
         <!-- Stats -->
         <div class="container">
